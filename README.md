@@ -17,3 +17,8 @@ Generates four different types of biomes - mountains, valleys, plains and desert
 - P : Default Camera View
 - M : Show Mesh
 - K : Show Axes
+
+## References
+1. https://dl.acm.org/doi/10.1145/325165.325247
+2. https://github.com/Reputeless/PerlinNoise
+3. https://cs.nyu.edu/~perlin/noise/
