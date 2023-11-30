@@ -1,0 +1,327 @@
+\doxysection{Camera Class Reference}
+\hypertarget{class_camera}{}\label{class_camera}\index{Camera@{Camera}}
+
+
+Represents a 3D camera with various properties and movement capabilities.  
+
+
+
+
+{\ttfamily \#include $<$camera.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_camera_a9928f87dfd84bba8793ecc7ec7478dbc}{Camera}} (glm\+::vec3 i\+Pos, glm\+::vec3 i\+Front, glm\+::vec3 i\+Up, float i\+Mov\+Speed, float i\+Yaw, float i\+Pitch)
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{class_camera}{Camera} class. \end{DoxyCompactList}\item 
+\Hypertarget{class_camera_a01f94c3543f56ede7af49dc778f19331}\label{class_camera_a01f94c3543f56ede7af49dc778f19331} 
+{\bfseries Camera} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for the \doxylink{class_camera}{Camera} class. \end{DoxyCompactList}\item 
+glm\+::mat4 \mbox{\hyperlink{class_camera_a5569ca5967e01d3344fbf6aba36d9820}{get\+View\+Matrix}} ()
+\begin{DoxyCompactList}\small\item\em Get the view matrix for the camera. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_camera_a4d7a35fdf50f82d1b886511984682963}{move\+Forwar\+Rel}} (float deltaT)
+\begin{DoxyCompactList}\small\item\em Move the camera forward relative to its front direction. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_camera_a60b2efce16643b2369931494509e076d}{move\+Backward\+Rel}} (float deltaT)
+\begin{DoxyCompactList}\small\item\em Move the camera backward relative to its front direction. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_camera_aa913def76511b0b4b60dcdeb0319c86b}{move\+Left\+Rel}} (float deltaT)
+\begin{DoxyCompactList}\small\item\em Move the camera left relative to its front direction. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_camera_a9c309954b244c4cfeb014eeec17b9158}{move\+Right\+Rel}} (float deltaT)
+\begin{DoxyCompactList}\small\item\em Move the camera right relative to its front direction. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_camera_a15d875f7285c82f0538af2bc0b73c0bb}{move\+Forwar\+Rel\+XZ}} (float deltaT)
+\begin{DoxyCompactList}\small\item\em Move the camera forward relative to its front direction on the XZ plane. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_camera_af678eba9a5a8fd2c533836dd823a07f9}{move\+Backward\+Rel\+XZ}} (float deltaT)
+\begin{DoxyCompactList}\small\item\em Move the camera backward relative to its front direction on the XZ plane. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_camera_ab29bb7953df5ab79b06f50bd5d3890ab}{move\+Left\+Rel\+XZ}} (float deltaT)
+\begin{DoxyCompactList}\small\item\em Move the camera left relative to its front direction on the XZ plane. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_camera_aafdac7dd404afc03e281f6ebfd2f0f1b}{move\+Right\+Rel\+XZ}} (float deltaT)
+\begin{DoxyCompactList}\small\item\em Move the camera right relative to its front direction on the XZ plane. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_camera_af4ae47155eb85b2e1d2cc5f737cb69ec}{move\+Up\+Abs}} (float deltaT)
+\begin{DoxyCompactList}\small\item\em Move the camera up in absolute coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_camera_a47f56803892538b6665b864252b3dd43}{move\+Down\+Abs}} (float deltaT)
+\begin{DoxyCompactList}\small\item\em Move the camera down in absolute coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_camera_a9c572685779dd6de1ed6e7752a7b9439}{interpret\+Mouse\+Movement}} (double x, double y)
+\begin{DoxyCompactList}\small\item\em Interpret mouse movement to change the camera\textquotesingle{}s front direction. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_camera_ae96c2c79cbaa4527e1b66d35017e9927}{zoom\+Sub}} (double i\+Yoffset)
+\begin{DoxyCompactList}\small\item\em Zoom in or out in the camera\textquotesingle{}s projection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_camera_ae54915cea5c8741a9cc38b8f9b6849ff}\label{class_camera_ae54915cea5c8741a9cc38b8f9b6849ff} 
+glm\+::vec3 {\bfseries pos}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_camera}{Camera} position in 3D space. \end{DoxyCompactList}\item 
+\Hypertarget{class_camera_a8847cf29c9c124906ad5d97ecb5c55d1}\label{class_camera_a8847cf29c9c124906ad5d97ecb5c55d1} 
+glm\+::vec3 {\bfseries front}
+\begin{DoxyCompactList}\small\item\em Front direction of the camera. \end{DoxyCompactList}\item 
+\Hypertarget{class_camera_a3fe5f351380fb118ffc600591769f049}\label{class_camera_a3fe5f351380fb118ffc600591769f049} 
+glm\+::vec3 {\bfseries up}
+\begin{DoxyCompactList}\small\item\em Up direction of the camera. \end{DoxyCompactList}\item 
+\Hypertarget{class_camera_a48b344cbf2921bfc1ff790b1d51aef5a}\label{class_camera_a48b344cbf2921bfc1ff790b1d51aef5a} 
+float {\bfseries mov\+Speed}
+\begin{DoxyCompactList}\small\item\em Movement speed of the camera. \end{DoxyCompactList}\item 
+\Hypertarget{class_camera_ad76701b22630f2df28a0ae15f0497a3a}\label{class_camera_ad76701b22630f2df28a0ae15f0497a3a} 
+float {\bfseries yaw}
+\begin{DoxyCompactList}\small\item\em Yaw angle (horizontal rotation) of the camera. \end{DoxyCompactList}\item 
+\Hypertarget{class_camera_ab56fcb39f580e8d2159cf2c9c6d9a65a}\label{class_camera_ab56fcb39f580e8d2159cf2c9c6d9a65a} 
+float {\bfseries pitch}
+\begin{DoxyCompactList}\small\item\em Pitch angle (vertical rotation) of the camera. \end{DoxyCompactList}\item 
+\Hypertarget{class_camera_af0c618f2e356b16a5320bc757b34e359}\label{class_camera_af0c618f2e356b16a5320bc757b34e359} 
+double {\bfseries last\+Mposx}
+\begin{DoxyCompactList}\small\item\em Last recorded mouse position x-\/coordinate. \end{DoxyCompactList}\item 
+\Hypertarget{class_camera_a85aee7d8c762910bae6de312eb2bdc63}\label{class_camera_a85aee7d8c762910bae6de312eb2bdc63} 
+double {\bfseries last\+Mposy}
+\begin{DoxyCompactList}\small\item\em Last recorded mouse position y-\/coordinate. \end{DoxyCompactList}\item 
+\Hypertarget{class_camera_aeb0bb28fc77ff2fb9ebb52645153666c}\label{class_camera_aeb0bb28fc77ff2fb9ebb52645153666c} 
+bool {\bfseries mouse\+Active}
+\begin{DoxyCompactList}\small\item\em Flag indicating whether the mouse is active. \end{DoxyCompactList}\item 
+\Hypertarget{class_camera_a3cc91637ea2c1bfc1f9277756b913fc5}\label{class_camera_a3cc91637ea2c1bfc1f9277756b913fc5} 
+float {\bfseries zoomC}
+\begin{DoxyCompactList}\small\item\em Zoom factor in the camera\textquotesingle{}s projection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a 3D camera with various properties and movement capabilities. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_camera_a9928f87dfd84bba8793ecc7ec7478dbc}\label{class_camera_a9928f87dfd84bba8793ecc7ec7478dbc} 
+\index{Camera@{Camera}!Camera@{Camera}}
+\index{Camera@{Camera}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{Camera()}{Camera()}}
+{\footnotesize\ttfamily Camera\+::\+Camera (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{i\+Pos,  }\item[{glm\+::vec3}]{i\+Front,  }\item[{glm\+::vec3}]{i\+Up,  }\item[{float}]{i\+Mov\+Speed,  }\item[{float}]{i\+Yaw,  }\item[{float}]{i\+Pitch }\end{DoxyParamCaption})}
+
+
+
+Constructor for the \doxylink{class_camera}{Camera} class. 
+
+Constructs a \doxylink{class_camera}{Camera} object with specified initial parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em i\+Pos} & Initial position of the camera. \\
+\hline
+{\em i\+Front} & Initial front direction of the camera. \\
+\hline
+{\em i\+Up} & Initial up direction of the camera. \\
+\hline
+{\em i\+Mov\+Speed} & Initial movement speed of the camera. \\
+\hline
+{\em i\+Yaw} & Initial yaw angle of the camera. \\
+\hline
+{\em i\+Pitch} & Initial pitch angle of the camera.\\
+\hline
+{\em i\+Pos} & The initial position of the camera. \\
+\hline
+{\em i\+Front} & The initial front vector of the camera. \\
+\hline
+{\em i\+Up} & The initial up vector of the camera. \\
+\hline
+{\em i\+Mov\+Speed} & The movement speed of the camera. \\
+\hline
+{\em i\+Yaw} & The initial yaw angle of the camera. \\
+\hline
+{\em i\+Pitch} & The initial pitch angle of the camera. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_camera_a5569ca5967e01d3344fbf6aba36d9820}\label{class_camera_a5569ca5967e01d3344fbf6aba36d9820} 
+\index{Camera@{Camera}!getViewMatrix@{getViewMatrix}}
+\index{getViewMatrix@{getViewMatrix}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{getViewMatrix()}{getViewMatrix()}}
+{\footnotesize\ttfamily glm\+::mat4 Camera\+::get\+View\+Matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the view matrix for the camera. 
+
+\begin{DoxyReturn}{Returns}
+The view matrix. 
+\end{DoxyReturn}
+\Hypertarget{class_camera_a9c572685779dd6de1ed6e7752a7b9439}\label{class_camera_a9c572685779dd6de1ed6e7752a7b9439} 
+\index{Camera@{Camera}!interpretMouseMovement@{interpretMouseMovement}}
+\index{interpretMouseMovement@{interpretMouseMovement}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{interpretMouseMovement()}{interpretMouseMovement()}}
+{\footnotesize\ttfamily void Camera\+::interpret\+Mouse\+Movement (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y }\end{DoxyParamCaption})}
+
+
+
+Interpret mouse movement to change the camera\textquotesingle{}s front direction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the mouse. \\
+\hline
+{\em y} & The y-\/coordinate of the mouse. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_camera_a60b2efce16643b2369931494509e076d}\label{class_camera_a60b2efce16643b2369931494509e076d} 
+\index{Camera@{Camera}!moveBackwardRel@{moveBackwardRel}}
+\index{moveBackwardRel@{moveBackwardRel}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{moveBackwardRel()}{moveBackwardRel()}}
+{\footnotesize\ttfamily void Camera\+::move\+Backward\+Rel (\begin{DoxyParamCaption}\item[{float}]{deltaT }\end{DoxyParamCaption})}
+
+
+
+Move the camera backward relative to its front direction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em deltaT} & Time delta for smooth movement. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_camera_af678eba9a5a8fd2c533836dd823a07f9}\label{class_camera_af678eba9a5a8fd2c533836dd823a07f9} 
+\index{Camera@{Camera}!moveBackwardRelXZ@{moveBackwardRelXZ}}
+\index{moveBackwardRelXZ@{moveBackwardRelXZ}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{moveBackwardRelXZ()}{moveBackwardRelXZ()}}
+{\footnotesize\ttfamily void Camera\+::move\+Backward\+Rel\+XZ (\begin{DoxyParamCaption}\item[{float}]{deltaT }\end{DoxyParamCaption})}
+
+
+
+Move the camera backward relative to its front direction on the XZ plane. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em deltaT} & Time delta for smooth movement. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_camera_a47f56803892538b6665b864252b3dd43}\label{class_camera_a47f56803892538b6665b864252b3dd43} 
+\index{Camera@{Camera}!moveDownAbs@{moveDownAbs}}
+\index{moveDownAbs@{moveDownAbs}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{moveDownAbs()}{moveDownAbs()}}
+{\footnotesize\ttfamily void Camera\+::move\+Down\+Abs (\begin{DoxyParamCaption}\item[{float}]{deltaT }\end{DoxyParamCaption})}
+
+
+
+Move the camera down in absolute coordinates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em deltaT} & Time delta for smooth movement. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_camera_a4d7a35fdf50f82d1b886511984682963}\label{class_camera_a4d7a35fdf50f82d1b886511984682963} 
+\index{Camera@{Camera}!moveForwarRel@{moveForwarRel}}
+\index{moveForwarRel@{moveForwarRel}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{moveForwarRel()}{moveForwarRel()}}
+{\footnotesize\ttfamily void Camera\+::move\+Forwar\+Rel (\begin{DoxyParamCaption}\item[{float}]{deltaT }\end{DoxyParamCaption})}
+
+
+
+Move the camera forward relative to its front direction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em deltaT} & Time delta for smooth movement. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_camera_a15d875f7285c82f0538af2bc0b73c0bb}\label{class_camera_a15d875f7285c82f0538af2bc0b73c0bb} 
+\index{Camera@{Camera}!moveForwarRelXZ@{moveForwarRelXZ}}
+\index{moveForwarRelXZ@{moveForwarRelXZ}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{moveForwarRelXZ()}{moveForwarRelXZ()}}
+{\footnotesize\ttfamily void Camera\+::move\+Forwar\+Rel\+XZ (\begin{DoxyParamCaption}\item[{float}]{deltaT }\end{DoxyParamCaption})}
+
+
+
+Move the camera forward relative to its front direction on the XZ plane. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em deltaT} & Time delta for smooth movement. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_camera_aa913def76511b0b4b60dcdeb0319c86b}\label{class_camera_aa913def76511b0b4b60dcdeb0319c86b} 
+\index{Camera@{Camera}!moveLeftRel@{moveLeftRel}}
+\index{moveLeftRel@{moveLeftRel}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{moveLeftRel()}{moveLeftRel()}}
+{\footnotesize\ttfamily void Camera\+::move\+Left\+Rel (\begin{DoxyParamCaption}\item[{float}]{deltaT }\end{DoxyParamCaption})}
+
+
+
+Move the camera left relative to its front direction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em deltaT} & Time delta for smooth movement. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_camera_ab29bb7953df5ab79b06f50bd5d3890ab}\label{class_camera_ab29bb7953df5ab79b06f50bd5d3890ab} 
+\index{Camera@{Camera}!moveLeftRelXZ@{moveLeftRelXZ}}
+\index{moveLeftRelXZ@{moveLeftRelXZ}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{moveLeftRelXZ()}{moveLeftRelXZ()}}
+{\footnotesize\ttfamily void Camera\+::move\+Left\+Rel\+XZ (\begin{DoxyParamCaption}\item[{float}]{deltaT }\end{DoxyParamCaption})}
+
+
+
+Move the camera left relative to its front direction on the XZ plane. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em deltaT} & Time delta for smooth movement. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_camera_a9c309954b244c4cfeb014eeec17b9158}\label{class_camera_a9c309954b244c4cfeb014eeec17b9158} 
+\index{Camera@{Camera}!moveRightRel@{moveRightRel}}
+\index{moveRightRel@{moveRightRel}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{moveRightRel()}{moveRightRel()}}
+{\footnotesize\ttfamily void Camera\+::move\+Right\+Rel (\begin{DoxyParamCaption}\item[{float}]{deltaT }\end{DoxyParamCaption})}
+
+
+
+Move the camera right relative to its front direction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em deltaT} & Time delta for smooth movement. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_camera_aafdac7dd404afc03e281f6ebfd2f0f1b}\label{class_camera_aafdac7dd404afc03e281f6ebfd2f0f1b} 
+\index{Camera@{Camera}!moveRightRelXZ@{moveRightRelXZ}}
+\index{moveRightRelXZ@{moveRightRelXZ}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{moveRightRelXZ()}{moveRightRelXZ()}}
+{\footnotesize\ttfamily void Camera\+::move\+Right\+Rel\+XZ (\begin{DoxyParamCaption}\item[{float}]{deltaT }\end{DoxyParamCaption})}
+
+
+
+Move the camera right relative to its front direction on the XZ plane. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em deltaT} & Time delta for smooth movement. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_camera_af4ae47155eb85b2e1d2cc5f737cb69ec}\label{class_camera_af4ae47155eb85b2e1d2cc5f737cb69ec} 
+\index{Camera@{Camera}!moveUpAbs@{moveUpAbs}}
+\index{moveUpAbs@{moveUpAbs}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{moveUpAbs()}{moveUpAbs()}}
+{\footnotesize\ttfamily void Camera\+::move\+Up\+Abs (\begin{DoxyParamCaption}\item[{float}]{deltaT }\end{DoxyParamCaption})}
+
+
+
+Move the camera up in absolute coordinates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em deltaT} & Time delta for smooth movement. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_camera_ae96c2c79cbaa4527e1b66d35017e9927}\label{class_camera_ae96c2c79cbaa4527e1b66d35017e9927} 
+\index{Camera@{Camera}!zoomSub@{zoomSub}}
+\index{zoomSub@{zoomSub}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{zoomSub()}{zoomSub()}}
+{\footnotesize\ttfamily void Camera\+::zoom\+Sub (\begin{DoxyParamCaption}\item[{double}]{i\+Yoffset }\end{DoxyParamCaption})}
+
+
+
+Zoom in or out in the camera\textquotesingle{}s projection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i\+Yoffset} & The offset for zooming. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/adapa/\+Open\+GL/\+GLP/perlin3/\mbox{\hyperlink{camera_8hpp}{camera.\+hpp}}\item 
+C\+:/\+Users/adapa/\+Open\+GL/\+GLP/perlin3/\mbox{\hyperlink{camera_8cpp}{camera.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,82 @@
+\doxysection{Biome\+Description.\+hpp}
+\hypertarget{_biome_description_8hpp_source}{}\label{_biome_description_8hpp_source}\index{C:/Users/adapa/OpenGL/GLP/perlin3/BiomeDescription.hpp@{C:/Users/adapa/OpenGL/GLP/perlin3/BiomeDescription.hpp}}
+\mbox{\hyperlink{_biome_description_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ BIOMEDESCRIPTION\_HPP}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ BIOMEDESCRIPTION\_HPP}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ BIOMESN\ 5}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <glm/glm.hpp>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3}{BiomeType}}\ :\ \textcolor{keywordtype}{int}\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3aa2ea31a399f98e12824121ee15aaea6a}{PLAINS}}\ =\ 0,\ \ \ \ \ }
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3a86aadf51e4be40acc1e76bd302a17dcb}{MOUNTAINS}}\ =\ 1,\ \ }
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3a427eb63b284bf229741f0a93da2222e7}{VALLEY}}\ =\ 2,\ \ \ \ \ }
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3a0ca6a521202910292a69e7aa7cec009a}{DESERT}}\ =\ 3,\ \ \ \ \ }
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3a9cecd86cc144278239720f875c429f00}{CANYONS}}\ =\ 4\ \ \ \ \ }
+\DoxyCodeLine{00023\ \};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_biome_values}{BiomeValues}}\{}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_biome_values_a9cd074ff10262e8a5cc47cbff6c48bad}{bFrequence}};\ \ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_biome_values_a17d903ed352397c2cd608e7be011c3c3}{bOctaves}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ glm::vec3\ \mbox{\hyperlink{struct_biome_values_a8ed2247a515b6d392c4c5ae1e897ee7c}{minColor}};\ }
+\DoxyCodeLine{00033\ \ \ \ \ glm::vec3\ \mbox{\hyperlink{struct_biome_values_aab7b1025589d393bb66e25493caa450a}{midColor}};\ }
+\DoxyCodeLine{00034\ \ \ \ \ glm::vec3\ \mbox{\hyperlink{struct_biome_values_adb9641e8d9ca06c90f3c50af78cf3aa0}{maxColor}};\ }
+\DoxyCodeLine{00035\ \};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00042\ glm::vec3\ \mbox{\hyperlink{_biome_description_8hpp_a07852c4fd457ad86c811662a5ffa9900}{rgbTransform}}(glm::vec3\ inrgb)\{}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordflow}{return}\ glm::vec3(inrgb.r/255.0,\ inrgb.g/255.0,\ inrgb.b/255.0);}
+\DoxyCodeLine{00044\ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00051\ \mbox{\hyperlink{struct_biome_values}{BiomeValues}}\ \mbox{\hyperlink{_biome_description_8hpp_ad4ffa0817369e8dd63351ffcd18e0f3b}{getTheBiomeDescription}}(\mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3}{BiomeType}}\ pbt)\{}
+\DoxyCodeLine{00052\ \ \ \ \ }
+\DoxyCodeLine{00053\ \ \ \ \ }
+\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{struct_biome_values}{BiomeValues}}\ descrip;}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/PLAINS}}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordflow}{if}(pbt\ ==\ \mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3aa2ea31a399f98e12824121ee15aaea6a}{PLAINS}})\{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ descrip.\mbox{\hyperlink{struct_biome_values_a9cd074ff10262e8a5cc47cbff6c48bad}{bFrequence}}\ =\ 10.0;}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ descrip.\mbox{\hyperlink{struct_biome_values_a17d903ed352397c2cd608e7be011c3c3}{bOctaves}}\ \ \ =\ 4;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ descrip.\mbox{\hyperlink{struct_biome_values_a8ed2247a515b6d392c4c5ae1e897ee7c}{minColor}}\ \ \ =\ \mbox{\hyperlink{_biome_description_8hpp_a07852c4fd457ad86c811662a5ffa9900}{rgbTransform}}(glm::vec3(34.0,139.0,34.0));}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ descrip.\mbox{\hyperlink{struct_biome_values_aab7b1025589d393bb66e25493caa450a}{midColor}}\ \ \ =\ \mbox{\hyperlink{_biome_description_8hpp_a07852c4fd457ad86c811662a5ffa9900}{rgbTransform}}(glm::vec3(154.0,205.0,50.0));}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ descrip.\mbox{\hyperlink{struct_biome_values_adb9641e8d9ca06c90f3c50af78cf3aa0}{maxColor}}\ \ \ =\ \mbox{\hyperlink{_biome_description_8hpp_a07852c4fd457ad86c811662a5ffa9900}{rgbTransform}}(glm::vec3(143.0,188.0,143.0));\textcolor{comment}{//(143,188,143)}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(pbt\ ==\ \mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3a86aadf51e4be40acc1e76bd302a17dcb}{MOUNTAINS}})\{\textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/MOUNTAINS}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ descrip.\mbox{\hyperlink{struct_biome_values_a9cd074ff10262e8a5cc47cbff6c48bad}{bFrequence}}\ =\ 18.0;}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ descrip.\mbox{\hyperlink{struct_biome_values_a17d903ed352397c2cd608e7be011c3c3}{bOctaves}}\ \ \ =\ 8;}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ descrip.\mbox{\hyperlink{struct_biome_values_a8ed2247a515b6d392c4c5ae1e897ee7c}{minColor}}\ \ \ =\ \mbox{\hyperlink{_biome_description_8hpp_a07852c4fd457ad86c811662a5ffa9900}{rgbTransform}}(glm::vec3(26.0,\ 19.0,\ 59.0));}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ descrip.\mbox{\hyperlink{struct_biome_values_aab7b1025589d393bb66e25493caa450a}{midColor}}\ \ \ =\ \mbox{\hyperlink{_biome_description_8hpp_a07852c4fd457ad86c811662a5ffa9900}{rgbTransform}}(glm::vec3(48.0,\ 65.0,\ 82.0));}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ descrip.\mbox{\hyperlink{struct_biome_values_adb9641e8d9ca06c90f3c50af78cf3aa0}{maxColor}}\ \ \ =\ \mbox{\hyperlink{_biome_description_8hpp_a07852c4fd457ad86c811662a5ffa9900}{rgbTransform}}(glm::vec3(255.0,\ 255.0,\ 255.0));}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00070\ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(pbt\ ==\ \mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3a427eb63b284bf229741f0a93da2222e7}{VALLEY}})\{\textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/VALLEY}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ descrip.\mbox{\hyperlink{struct_biome_values_a9cd074ff10262e8a5cc47cbff6c48bad}{bFrequence}}\ =\ 8.0;}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ descrip.\mbox{\hyperlink{struct_biome_values_a17d903ed352397c2cd608e7be011c3c3}{bOctaves}}\ \ \ =\ 8;}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ descrip.\mbox{\hyperlink{struct_biome_values_a8ed2247a515b6d392c4c5ae1e897ee7c}{minColor}}\ \ \ =\ \mbox{\hyperlink{_biome_description_8hpp_a07852c4fd457ad86c811662a5ffa9900}{rgbTransform}}(glm::vec3(7.0,\ 0.0,\ 119.0));}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ descrip.\mbox{\hyperlink{struct_biome_values_aab7b1025589d393bb66e25493caa450a}{midColor}}\ \ \ =\ \mbox{\hyperlink{_biome_description_8hpp_a07852c4fd457ad86c811662a5ffa9900}{rgbTransform}}(glm::vec3(46.0,\ 139.0,\ 87.0));}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ descrip.\mbox{\hyperlink{struct_biome_values_adb9641e8d9ca06c90f3c50af78cf3aa0}{maxColor}}\ \ \ =\ \mbox{\hyperlink{_biome_description_8hpp_a07852c4fd457ad86c811662a5ffa9900}{rgbTransform}}(glm::vec3(8.0,\ 73.0,\ 15.0));}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00077\ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(pbt\ ==\ \mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3a0ca6a521202910292a69e7aa7cec009a}{DESERT}})\{\textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/DESERT}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ descrip.\mbox{\hyperlink{struct_biome_values_a9cd074ff10262e8a5cc47cbff6c48bad}{bFrequence}}\ =\ 6.0;}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ descrip.\mbox{\hyperlink{struct_biome_values_a17d903ed352397c2cd608e7be011c3c3}{bOctaves}}\ \ \ =\ 2;}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ descrip.\mbox{\hyperlink{struct_biome_values_a8ed2247a515b6d392c4c5ae1e897ee7c}{minColor}}\ \ \ =\ \mbox{\hyperlink{_biome_description_8hpp_a07852c4fd457ad86c811662a5ffa9900}{rgbTransform}}(glm::vec3(0,\ 0,\ 0));}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ descrip.\mbox{\hyperlink{struct_biome_values_aab7b1025589d393bb66e25493caa450a}{midColor}}\ \ \ =\ \mbox{\hyperlink{_biome_description_8hpp_a07852c4fd457ad86c811662a5ffa9900}{rgbTransform}}(glm::vec3(125,\ 75,\ 33));}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ descrip.\mbox{\hyperlink{struct_biome_values_adb9641e8d9ca06c90f3c50af78cf3aa0}{maxColor}}\ \ \ =\ \mbox{\hyperlink{_biome_description_8hpp_a07852c4fd457ad86c811662a5ffa9900}{rgbTransform}}(glm::vec3(173,\ 156,\ 78));}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00084\ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(pbt\ ==\ \mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3a9cecd86cc144278239720f875c429f00}{CANYONS}})\{\textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/CANYONS}}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ descrip.\mbox{\hyperlink{struct_biome_values_a9cd074ff10262e8a5cc47cbff6c48bad}{bFrequence}}\ =\ 6.0;}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ descrip.\mbox{\hyperlink{struct_biome_values_a17d903ed352397c2cd608e7be011c3c3}{bOctaves}}\ \ \ =\ 4;}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ descrip.\mbox{\hyperlink{struct_biome_values_a8ed2247a515b6d392c4c5ae1e897ee7c}{minColor}}\ \ \ =\ \mbox{\hyperlink{_biome_description_8hpp_a07852c4fd457ad86c811662a5ffa9900}{rgbTransform}}(glm::vec3(0,\ 0,\ 0));}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ descrip.\mbox{\hyperlink{struct_biome_values_aab7b1025589d393bb66e25493caa450a}{midColor}}\ \ \ =\ \mbox{\hyperlink{_biome_description_8hpp_a07852c4fd457ad86c811662a5ffa9900}{rgbTransform}}(glm::vec3(244.0,\ 164.0,\ 96.0));}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ descrip.\mbox{\hyperlink{struct_biome_values_adb9641e8d9ca06c90f3c50af78cf3aa0}{maxColor}}\ \ \ =\ \mbox{\hyperlink{_biome_description_8hpp_a07852c4fd457ad86c811662a5ffa9900}{rgbTransform}}(glm::vec3(255,\ 255,\ 255));}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00091\ \ \ \ \ \}}
+\DoxyCodeLine{00092\ \ \ \ \ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordflow}{return}\ descrip;}
+\DoxyCodeLine{00094\ \}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

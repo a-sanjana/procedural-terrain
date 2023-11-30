@@ -1,0 +1,316 @@
+\doxysection{Shader Class Reference}
+\hypertarget{class_shader}{}\label{class_shader}\index{Shader@{Shader}}
+
+
+The \doxylink{class_shader}{Shader} class represents a shader program in Open\+GL.  
+
+
+
+
+{\ttfamily \#include $<$shader.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_shader_a3e135bbf914b087a939114d79c10d283}{Shader}} (const char \texorpdfstring{$\ast$}{*}vertex\+Path, const char \texorpdfstring{$\ast$}{*}fragment\+Path)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_shader}{Shader} object by loading and compiling the vertex and fragment shaders from file paths. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_shader_aef95349c3280a0cc7c92df02c48e6bce}{Shader}} (unsigned int idcp)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_shader}{Shader} object with an existing shader program ID. \end{DoxyCompactList}\item 
+\Hypertarget{class_shader_a870fa9f13d69e558815d6fd351a469dc}\label{class_shader_a870fa9f13d69e558815d6fd351a469dc} 
+void {\bfseries use} ()
+\begin{DoxyCompactList}\small\item\em Activates the shader program. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_shader_ab1a56d6c299bd7eaa18c2e142ef7bd9f}{set\+Bool}} (const std\+::string \&name, bool value) const
+\begin{DoxyCompactList}\small\item\em Sets a boolean uniform in the shader program. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_shader_ad362e2b654cd95a3574cd505411e41fd}{set\+Int}} (const std\+::string \&name, int value) const
+\begin{DoxyCompactList}\small\item\em Sets an integer uniform in the shader program. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_shader_afe7367621f74c2d26431d8ac15252bf3}{set\+Float}} (const std\+::string \&name, float value) const
+\begin{DoxyCompactList}\small\item\em Sets a float uniform in the shader program. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_shader_afd4d41322a1cdd1d5155bf124d19debf}{set\+Vec2}} (const std\+::string \&name, const glm\+::vec2 \&value) const
+\begin{DoxyCompactList}\small\item\em Sets a 2D vector uniform in the shader program. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_shader_afb91bc9e954bf590857c96ab1331b0ec}{set\+Vec2}} (const std\+::string \&name, float x, float y) const
+\begin{DoxyCompactList}\small\item\em Sets a 2D vector uniform in the shader program. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_shader_aeb021061c5d451329d92257b07dbfec3}{set\+Vec3}} (const std\+::string \&name, const glm\+::vec3 \&value) const
+\begin{DoxyCompactList}\small\item\em Sets a 3D vector uniform in the shader program. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_shader_a90092c25b7dc23964c465b93887300f9}{set\+Vec3}} (const std\+::string \&name, float x, float y, float z) const
+\begin{DoxyCompactList}\small\item\em Sets a 3D vector uniform in the shader program. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_shader_a79cbe674f6bf1a576a48045dcb924de5}{set\+Vec4}} (const std\+::string \&name, const glm\+::vec4 \&value) const
+\begin{DoxyCompactList}\small\item\em Sets a 4D vector uniform in the shader program. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_shader_ad7906b3a47e6f2d62ec79f4c871aadb1}{set\+Vec4}} (const std\+::string \&name, float x, float y, float z, float w) const
+\begin{DoxyCompactList}\small\item\em Sets a 4D vector uniform in the shader program. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_shader_a91a6ee79b959cacd618c9e29a5bbd732}{set\+Mat2}} (const std\+::string \&name, const glm\+::mat2 \&mat) const
+\begin{DoxyCompactList}\small\item\em Sets a 2x2 matrix uniform in the shader program. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_shader_a3e24fcad187493dfebaa12939072e91d}{set\+Mat3}} (const std\+::string \&name, const glm\+::mat3 \&mat) const
+\begin{DoxyCompactList}\small\item\em Sets a 3x3 matrix uniform in the shader program. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_shader_a8e711c96f3e1722cbfb88fde9478977c}{set\+Mat4}} (const std\+::string \&name, const glm\+::mat4 \&mat) const
+\begin{DoxyCompactList}\small\item\em Sets a 4x4 matrix uniform in the shader program. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_shader_a142a08b6fbdfc982d82ca10ee0b0f38d}\label{class_shader_a142a08b6fbdfc982d82ca10ee0b0f38d} 
+unsigned int {\bfseries ID}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_shader}{Shader} class represents a shader program in Open\+GL. 
+
+This class provides functionality to create, activate, and set uniforms for a shader program. It also includes utility functions for checking shader compilation and linking errors. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_shader_a3e135bbf914b087a939114d79c10d283}\label{class_shader_a3e135bbf914b087a939114d79c10d283} 
+\index{Shader@{Shader}!Shader@{Shader}}
+\index{Shader@{Shader}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{Shader()}{Shader()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Shader\+::\+Shader (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{vertex\+Path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{fragment\+Path }\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_shader}{Shader} object by loading and compiling the vertex and fragment shaders from file paths. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertex\+Path} & The file path of the vertex shader source code. \\
+\hline
+{\em fragment\+Path} & The file path of the fragment shader source code. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_shader_aef95349c3280a0cc7c92df02c48e6bce}\label{class_shader_aef95349c3280a0cc7c92df02c48e6bce} 
+\index{Shader@{Shader}!Shader@{Shader}}
+\index{Shader@{Shader}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{Shader()}{Shader()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Shader\+::\+Shader (\begin{DoxyParamCaption}\item[{unsigned int}]{idcp }\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_shader}{Shader} object with an existing shader program ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em idcp} & The ID of the existing shader program. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_shader_ab1a56d6c299bd7eaa18c2e142ef7bd9f}\label{class_shader_ab1a56d6c299bd7eaa18c2e142ef7bd9f} 
+\index{Shader@{Shader}!setBool@{setBool}}
+\index{setBool@{setBool}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{setBool()}{setBool()}}
+{\footnotesize\ttfamily void Shader\+::set\+Bool (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{bool}]{value }\end{DoxyParamCaption}) const}
+
+
+
+Sets a boolean uniform in the shader program. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the boolean uniform. \\
+\hline
+{\em value} & The value to set for the boolean uniform. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_shader_afe7367621f74c2d26431d8ac15252bf3}\label{class_shader_afe7367621f74c2d26431d8ac15252bf3} 
+\index{Shader@{Shader}!setFloat@{setFloat}}
+\index{setFloat@{setFloat}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{setFloat()}{setFloat()}}
+{\footnotesize\ttfamily void Shader\+::set\+Float (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{float}]{value }\end{DoxyParamCaption}) const}
+
+
+
+Sets a float uniform in the shader program. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the float uniform. \\
+\hline
+{\em value} & The value to set for the float uniform. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_shader_ad362e2b654cd95a3574cd505411e41fd}\label{class_shader_ad362e2b654cd95a3574cd505411e41fd} 
+\index{Shader@{Shader}!setInt@{setInt}}
+\index{setInt@{setInt}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{setInt()}{setInt()}}
+{\footnotesize\ttfamily void Shader\+::set\+Int (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{int}]{value }\end{DoxyParamCaption}) const}
+
+
+
+Sets an integer uniform in the shader program. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the integer uniform. \\
+\hline
+{\em value} & The value to set for the integer uniform. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_shader_a91a6ee79b959cacd618c9e29a5bbd732}\label{class_shader_a91a6ee79b959cacd618c9e29a5bbd732} 
+\index{Shader@{Shader}!setMat2@{setMat2}}
+\index{setMat2@{setMat2}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{setMat2()}{setMat2()}}
+{\footnotesize\ttfamily void Shader\+::set\+Mat2 (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const glm\+::mat2 \&}]{mat }\end{DoxyParamCaption}) const}
+
+
+
+Sets a 2x2 matrix uniform in the shader program. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the 2x2 matrix uniform. \\
+\hline
+{\em mat} & The matrix to set for the uniform. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_shader_a3e24fcad187493dfebaa12939072e91d}\label{class_shader_a3e24fcad187493dfebaa12939072e91d} 
+\index{Shader@{Shader}!setMat3@{setMat3}}
+\index{setMat3@{setMat3}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{setMat3()}{setMat3()}}
+{\footnotesize\ttfamily void Shader\+::set\+Mat3 (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const glm\+::mat3 \&}]{mat }\end{DoxyParamCaption}) const}
+
+
+
+Sets a 3x3 matrix uniform in the shader program. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the 3x3 matrix uniform. \\
+\hline
+{\em mat} & The matrix to set for the uniform. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_shader_a8e711c96f3e1722cbfb88fde9478977c}\label{class_shader_a8e711c96f3e1722cbfb88fde9478977c} 
+\index{Shader@{Shader}!setMat4@{setMat4}}
+\index{setMat4@{setMat4}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{setMat4()}{setMat4()}}
+{\footnotesize\ttfamily void Shader\+::set\+Mat4 (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const glm\+::mat4 \&}]{mat }\end{DoxyParamCaption}) const}
+
+
+
+Sets a 4x4 matrix uniform in the shader program. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the 4x4 matrix uniform. \\
+\hline
+{\em mat} & The matrix to set for the uniform. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_shader_afd4d41322a1cdd1d5155bf124d19debf}\label{class_shader_afd4d41322a1cdd1d5155bf124d19debf} 
+\index{Shader@{Shader}!setVec2@{setVec2}}
+\index{setVec2@{setVec2}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{setVec2()}{setVec2()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Shader\+::set\+Vec2 (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const glm\+::vec2 \&}]{value }\end{DoxyParamCaption}) const}
+
+
+
+Sets a 2D vector uniform in the shader program. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the 2D vector uniform. \\
+\hline
+{\em value} & The value to set for the 2D vector uniform. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_shader_afb91bc9e954bf590857c96ab1331b0ec}\label{class_shader_afb91bc9e954bf590857c96ab1331b0ec} 
+\index{Shader@{Shader}!setVec2@{setVec2}}
+\index{setVec2@{setVec2}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{setVec2()}{setVec2()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Shader\+::set\+Vec2 (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption}) const}
+
+
+
+Sets a 2D vector uniform in the shader program. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the 2D vector uniform. \\
+\hline
+{\em x} & The x component of the 2D vector. \\
+\hline
+{\em y} & The y component of the 2D vector. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_shader_aeb021061c5d451329d92257b07dbfec3}\label{class_shader_aeb021061c5d451329d92257b07dbfec3} 
+\index{Shader@{Shader}!setVec3@{setVec3}}
+\index{setVec3@{setVec3}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{setVec3()}{setVec3()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Shader\+::set\+Vec3 (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const glm\+::vec3 \&}]{value }\end{DoxyParamCaption}) const}
+
+
+
+Sets a 3D vector uniform in the shader program. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the 3D vector uniform. \\
+\hline
+{\em value} & The value to set for the 3D vector uniform. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_shader_a90092c25b7dc23964c465b93887300f9}\label{class_shader_a90092c25b7dc23964c465b93887300f9} 
+\index{Shader@{Shader}!setVec3@{setVec3}}
+\index{setVec3@{setVec3}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{setVec3()}{setVec3()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Shader\+::set\+Vec3 (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{float}]{x,  }\item[{float}]{y,  }\item[{float}]{z }\end{DoxyParamCaption}) const}
+
+
+
+Sets a 3D vector uniform in the shader program. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the 3D vector uniform. \\
+\hline
+{\em x} & The x component of the 3D vector. \\
+\hline
+{\em y} & The y component of the 3D vector. \\
+\hline
+{\em z} & The z component of the 3D vector. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_shader_a79cbe674f6bf1a576a48045dcb924de5}\label{class_shader_a79cbe674f6bf1a576a48045dcb924de5} 
+\index{Shader@{Shader}!setVec4@{setVec4}}
+\index{setVec4@{setVec4}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{setVec4()}{setVec4()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Shader\+::set\+Vec4 (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const glm\+::vec4 \&}]{value }\end{DoxyParamCaption}) const}
+
+
+
+Sets a 4D vector uniform in the shader program. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the 4D vector uniform. \\
+\hline
+{\em value} & The value to set for the 4D vector uniform. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_shader_ad7906b3a47e6f2d62ec79f4c871aadb1}\label{class_shader_ad7906b3a47e6f2d62ec79f4c871aadb1} 
+\index{Shader@{Shader}!setVec4@{setVec4}}
+\index{setVec4@{setVec4}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{setVec4()}{setVec4()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Shader\+::set\+Vec4 (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{float}]{x,  }\item[{float}]{y,  }\item[{float}]{z,  }\item[{float}]{w }\end{DoxyParamCaption}) const}
+
+
+
+Sets a 4D vector uniform in the shader program. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the 4D vector uniform. \\
+\hline
+{\em x} & The x component of the 4D vector. \\
+\hline
+{\em y} & The y component of the 4D vector. \\
+\hline
+{\em z} & The z component of the 4D vector. \\
+\hline
+{\em w} & The w component of the 4D vector. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/adapa/\+Open\+GL/\+GLP/perlin3/\mbox{\hyperlink{shader_8hpp}{shader.\+hpp}}\item 
+C\+:/\+Users/adapa/\+Open\+GL/\+GLP/perlin3/\mbox{\hyperlink{shader_8cpp}{shader.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,90 @@
+\doxysection{Terrain\+Chunk Class Reference}
+\hypertarget{class_terrain_chunk}{}\label{class_terrain_chunk}\index{TerrainChunk@{TerrainChunk}}
+
+
+Class for generating and rendering terrain chunks.  
+
+
+
+
+{\ttfamily \#include $<$Terrain\+Chunk.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_terrain_chunk_a95c3df8d07426f5921fb86faa8c52d9a}{Terrain\+Chunk}} (unsigned int pseed, float pvertex\+Interval, unsigned int pgrid\+Size, float pxi, float pzi, unsigned int p\+Biosz, unsigned int p\+Bioborderlen)
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{class_terrain_chunk}{Terrain\+Chunk} class. \end{DoxyCompactList}\item 
+\Hypertarget{class_terrain_chunk_a5d16535304fddc9087906db93060c022}\label{class_terrain_chunk_a5d16535304fddc9087906db93060c022} 
+void {\bfseries Draw\+Chunk} ()
+\begin{DoxyCompactList}\small\item\em Draws the terrain chunk using Open\+GL. \end{DoxyCompactList}\item 
+\Hypertarget{class_terrain_chunk_ab3b2762c7b7000c4a385ff93b5ba3416}\label{class_terrain_chunk_ab3b2762c7b7000c4a385ff93b5ba3416} 
+void {\bfseries shut\+Down} ()
+\begin{DoxyCompactList}\small\item\em Shuts down and releases resources. \end{DoxyCompactList}\item 
+glm\+::vec3 \mbox{\hyperlink{class_terrain_chunk_a4adcb64054dbf977f4888dff8047c99b}{get\+Initial\+XZ}} ()
+\begin{DoxyCompactList}\small\item\em Gets the initial XZ coordinates of the terrain chunk. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_terrain_chunk_ac73d8fb140134f582e81060bd037841d}\label{class_terrain_chunk_ac73d8fb140134f582e81060bd037841d} 
+unsigned int {\bfseries VAO}
+\item 
+\Hypertarget{class_terrain_chunk_adc0d8f9529e956c697aec3ace878807b}\label{class_terrain_chunk_adc0d8f9529e956c697aec3ace878807b} 
+std\+::vector$<$ \mbox{\hyperlink{struct_vertex}{Vertex}} $>$ {\bfseries vertices}
+\item 
+\Hypertarget{class_terrain_chunk_a3c33e38b7e762b015080f705b86441ad}\label{class_terrain_chunk_a3c33e38b7e762b015080f705b86441ad} 
+std\+::vector$<$ unsigned int $>$ {\bfseries indices}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for generating and rendering terrain chunks. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_terrain_chunk_a95c3df8d07426f5921fb86faa8c52d9a}\label{class_terrain_chunk_a95c3df8d07426f5921fb86faa8c52d9a} 
+\index{TerrainChunk@{TerrainChunk}!TerrainChunk@{TerrainChunk}}
+\index{TerrainChunk@{TerrainChunk}!TerrainChunk@{TerrainChunk}}
+\doxysubsubsection{\texorpdfstring{TerrainChunk()}{TerrainChunk()}}
+{\footnotesize\ttfamily Terrain\+Chunk\+::\+Terrain\+Chunk (\begin{DoxyParamCaption}\item[{unsigned int}]{pseed,  }\item[{float}]{pvertex\+Interval,  }\item[{unsigned int}]{pgrid\+Size,  }\item[{float}]{pxi,  }\item[{float}]{pzi,  }\item[{unsigned int}]{p\+Biosz,  }\item[{unsigned int}]{p\+Bioborderlen }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor for the \doxylink{class_terrain_chunk}{Terrain\+Chunk} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pseed} & Seed for terrain generation. \\
+\hline
+{\em pvertex\+Interval} & Interval between vertices. \\
+\hline
+{\em pgrid\+Size} & Size of the grid. \\
+\hline
+{\em pxi} & X-\/coordinate of the initial position. \\
+\hline
+{\em pzi} & Z-\/coordinate of the initial position. \\
+\hline
+{\em p\+Biosz} & Size of the biome. \\
+\hline
+{\em p\+Bioborderlen} & Border length for the biome. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_terrain_chunk_a4adcb64054dbf977f4888dff8047c99b}\label{class_terrain_chunk_a4adcb64054dbf977f4888dff8047c99b} 
+\index{TerrainChunk@{TerrainChunk}!getInitialXZ@{getInitialXZ}}
+\index{getInitialXZ@{getInitialXZ}!TerrainChunk@{TerrainChunk}}
+\doxysubsubsection{\texorpdfstring{getInitialXZ()}{getInitialXZ()}}
+{\footnotesize\ttfamily glm\+::vec3 Terrain\+Chunk\+::get\+Initial\+XZ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the initial XZ coordinates of the terrain chunk. 
+
+\begin{DoxyReturn}{Returns}
+The initial XZ coordinates. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/adapa/\+Open\+GL/\+GLP/perlin3/\mbox{\hyperlink{_terrain_chunk_8hpp}{Terrain\+Chunk.\+hpp}}\end{DoxyCompactItemize}

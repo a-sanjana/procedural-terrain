@@ -1,0 +1,117 @@
+\doxysection{C\+:/\+Users/adapa/\+Open\+GL/\+GLP/perlin3/\+Biome\+Description.hpp File Reference}
+\hypertarget{_biome_description_8hpp}{}\label{_biome_description_8hpp}\index{C:/Users/adapa/OpenGL/GLP/perlin3/BiomeDescription.hpp@{C:/Users/adapa/OpenGL/GLP/perlin3/BiomeDescription.hpp}}
+
+
+Defines the Biome\+Description struct and related functions for biome generation.  
+
+
+{\ttfamily \#include $<$glm/glm.\+hpp$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_biome_values}{Biome\+Values}}
+\begin{DoxyCompactList}\small\item\em Represents the description of a biome. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_biome_description_8hpp_a7e133c712f335a0d772870341f180955}\label{_biome_description_8hpp_a7e133c712f335a0d772870341f180955} 
+\#define {\bfseries BIOMESN}~5
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3}{Biome\+Type}} \+: int \{ \newline
+\mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3aa2ea31a399f98e12824121ee15aaea6a}{PLAINS}} = 0
+, \mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3a86aadf51e4be40acc1e76bd302a17dcb}{MOUNTAINS}} = 1
+, \mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3a427eb63b284bf229741f0a93da2222e7}{VALLEY}} = 2
+, \mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3a0ca6a521202910292a69e7aa7cec009a}{DESERT}} = 3
+, \newline
+\mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3a9cecd86cc144278239720f875c429f00}{CANYONS}} = 4
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration representing different types of biomes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+glm\+::vec3 \mbox{\hyperlink{_biome_description_8hpp_a07852c4fd457ad86c811662a5ffa9900}{rgb\+Transform}} (glm\+::vec3 inrgb)
+\begin{DoxyCompactList}\small\item\em Transform RGB values from 0-\/255 range to 0-\/1 range. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_biome_values}{Biome\+Values}} \mbox{\hyperlink{_biome_description_8hpp_ad4ffa0817369e8dd63351ffcd18e0f3b}{get\+The\+Biome\+Description}} (\mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3}{Biome\+Type}} pbt)
+\begin{DoxyCompactList}\small\item\em Get the description of a specific biome. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines the Biome\+Description struct and related functions for biome generation. 
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3}\label{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3} 
+\index{BiomeDescription.hpp@{BiomeDescription.hpp}!BiomeType@{BiomeType}}
+\index{BiomeType@{BiomeType}!BiomeDescription.hpp@{BiomeDescription.hpp}}
+\doxysubsubsection{\texorpdfstring{BiomeType}{BiomeType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3}{Biome\+Type}} \+: int}
+
+
+
+Enumeration representing different types of biomes. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PLAINS@{PLAINS}!BiomeDescription.hpp@{BiomeDescription.hpp}}\index{BiomeDescription.hpp@{BiomeDescription.hpp}!PLAINS@{PLAINS}}}\Hypertarget{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3aa2ea31a399f98e12824121ee15aaea6a}\label{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3aa2ea31a399f98e12824121ee15aaea6a} 
+PLAINS&Plains biome. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MOUNTAINS@{MOUNTAINS}!BiomeDescription.hpp@{BiomeDescription.hpp}}\index{BiomeDescription.hpp@{BiomeDescription.hpp}!MOUNTAINS@{MOUNTAINS}}}\Hypertarget{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3a86aadf51e4be40acc1e76bd302a17dcb}\label{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3a86aadf51e4be40acc1e76bd302a17dcb} 
+MOUNTAINS&Mountains biome. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VALLEY@{VALLEY}!BiomeDescription.hpp@{BiomeDescription.hpp}}\index{BiomeDescription.hpp@{BiomeDescription.hpp}!VALLEY@{VALLEY}}}\Hypertarget{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3a427eb63b284bf229741f0a93da2222e7}\label{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3a427eb63b284bf229741f0a93da2222e7} 
+VALLEY&Valley biome. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DESERT@{DESERT}!BiomeDescription.hpp@{BiomeDescription.hpp}}\index{BiomeDescription.hpp@{BiomeDescription.hpp}!DESERT@{DESERT}}}\Hypertarget{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3a0ca6a521202910292a69e7aa7cec009a}\label{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3a0ca6a521202910292a69e7aa7cec009a} 
+DESERT&Desert biome. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CANYONS@{CANYONS}!BiomeDescription.hpp@{BiomeDescription.hpp}}\index{BiomeDescription.hpp@{BiomeDescription.hpp}!CANYONS@{CANYONS}}}\Hypertarget{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3a9cecd86cc144278239720f875c429f00}\label{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3a9cecd86cc144278239720f875c429f00} 
+CANYONS&Canyons biome. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_biome_description_8hpp_ad4ffa0817369e8dd63351ffcd18e0f3b}\label{_biome_description_8hpp_ad4ffa0817369e8dd63351ffcd18e0f3b} 
+\index{BiomeDescription.hpp@{BiomeDescription.hpp}!getTheBiomeDescription@{getTheBiomeDescription}}
+\index{getTheBiomeDescription@{getTheBiomeDescription}!BiomeDescription.hpp@{BiomeDescription.hpp}}
+\doxysubsubsection{\texorpdfstring{getTheBiomeDescription()}{getTheBiomeDescription()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_biome_values}{Biome\+Values}} get\+The\+Biome\+Description (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3}{Biome\+Type}}}]{pbt }\end{DoxyParamCaption})}
+
+
+
+Get the description of a specific biome. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pbt} & The type of biome. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The biome description. 
+\end{DoxyReturn}
+\Hypertarget{_biome_description_8hpp_a07852c4fd457ad86c811662a5ffa9900}\label{_biome_description_8hpp_a07852c4fd457ad86c811662a5ffa9900} 
+\index{BiomeDescription.hpp@{BiomeDescription.hpp}!rgbTransform@{rgbTransform}}
+\index{rgbTransform@{rgbTransform}!BiomeDescription.hpp@{BiomeDescription.hpp}}
+\doxysubsubsection{\texorpdfstring{rgbTransform()}{rgbTransform()}}
+{\footnotesize\ttfamily glm\+::vec3 rgb\+Transform (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{inrgb }\end{DoxyParamCaption})}
+
+
+
+Transform RGB values from 0-\/255 range to 0-\/1 range. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em inrgb} & RGB values in the range of 0-\/255. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Transformed RGB values in the range of 0-\/1. 
+\end{DoxyReturn}

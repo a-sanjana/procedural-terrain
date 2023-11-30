@@ -1,0 +1,172 @@
+\doxysection{C\+:/\+Users/adapa/\+Open\+GL/\+GLP/perlin3/ptg.hpp File Reference}
+\hypertarget{ptg_8hpp}{}\label{ptg_8hpp}\index{C:/Users/adapa/OpenGL/GLP/perlin3/ptg.hpp@{C:/Users/adapa/OpenGL/GLP/perlin3/ptg.hpp}}
+
+
+Defines the main header file for the Procedural Terrain Generation application.  
+
+
+{\ttfamily \#include $<$cstdio$>$}\newline
+{\ttfamily \#include $<$cstdlib$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include "{}include\textbackslash{}glad\textbackslash{}glad.\+h"{}}\newline
+{\ttfamily \#include $<$GLFW/glfw3.\+h$>$}\newline
+{\ttfamily \#include $<$glm/glm.\+hpp$>$}\newline
+{\ttfamily \#include $<$glm/gtc/matrix\+\_\+transform.\+hpp$>$}\newline
+{\ttfamily \#include $<$glm/gtc/type\+\_\+ptr.\+hpp$>$}\newline
+{\ttfamily \#include "{}shader.\+hpp"{}}\newline
+{\ttfamily \#include "{}camera.\+hpp"{}}\newline
+{\ttfamily \#include "{}Perlin\+Noise.\+hpp"{}}\newline
+{\ttfamily \#include "{}Terrain\+Gen.\+hpp"{}}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{ptg_8hpp_a0b9e239c8889734711f29fe45551605b}{key\+Callback}} (GLFWwindow \texorpdfstring{$\ast$}{*}window, int key, int scancode, int action, int mods)
+\begin{DoxyCompactList}\small\item\em GLFW key callback function to handle keyboard input. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ptg_8hpp_a09882d71c70e402a1d6179c914a001c2}{framebuffer\+Size\+Callback}} (GLFWwindow \texorpdfstring{$\ast$}{*}window, int width, int height)
+\begin{DoxyCompactList}\small\item\em GLFW framebuffer size callback function to handle window resizing. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ptg_8hpp_a5ce8038c3d813c051d431ed6472aece1}{process\+Input\+Holding\+Key}} (GLFWwindow \texorpdfstring{$\ast$}{*}window, float delta\+Time)
+\begin{DoxyCompactList}\small\item\em Process input while holding down specific keys. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ptg_8hpp_aa9b224479e8c1cc5251b8e7f3fdabacd}{scroll\+Callback}} (GLFWwindow \texorpdfstring{$\ast$}{*}window, double xoffset, double yoffset)
+\begin{DoxyCompactList}\small\item\em GLFW scroll callback function to handle mouse scroll events. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{ptg_8hpp_a690c879b28f90394b0ae42f30b825ea2}\label{ptg_8hpp_a690c879b28f90394b0ae42f30b825ea2} 
+const unsigned int {\bfseries ISCR\+\_\+W} = 100 \texorpdfstring{$\ast$}{*} 16
+\item 
+\Hypertarget{ptg_8hpp_a1d21f80e1c7d44d71c457248028f848c}\label{ptg_8hpp_a1d21f80e1c7d44d71c457248028f848c} 
+const unsigned int {\bfseries ISCR\+\_\+H} = 100 \texorpdfstring{$\ast$}{*} 9
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines the main header file for the Procedural Terrain Generation application. 
+
+This file includes necessary libraries, global settings, and function declarations. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{ptg_8hpp_a09882d71c70e402a1d6179c914a001c2}\label{ptg_8hpp_a09882d71c70e402a1d6179c914a001c2} 
+\index{ptg.hpp@{ptg.hpp}!framebufferSizeCallback@{framebufferSizeCallback}}
+\index{framebufferSizeCallback@{framebufferSizeCallback}!ptg.hpp@{ptg.hpp}}
+\doxysubsubsection{\texorpdfstring{framebufferSizeCallback()}{framebufferSizeCallback()}}
+{\footnotesize\ttfamily void framebuffer\+Size\+Callback (\begin{DoxyParamCaption}\item[{GLFWwindow \texorpdfstring{$\ast$}{*}}]{window,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+
+
+
+GLFW framebuffer size callback function to handle window resizing. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & The GLFW window. \\
+\hline
+{\em width} & The new width of the window. \\
+\hline
+{\em height} & The new height of the window.\\
+\hline
+\end{DoxyParams}
+GLFW framebuffer size callback function to handle window resizing.
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & GLFW window. \\
+\hline
+{\em width} & New width of the window. \\
+\hline
+{\em height} & New height of the window. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{ptg_8hpp_a0b9e239c8889734711f29fe45551605b}\label{ptg_8hpp_a0b9e239c8889734711f29fe45551605b} 
+\index{ptg.hpp@{ptg.hpp}!keyCallback@{keyCallback}}
+\index{keyCallback@{keyCallback}!ptg.hpp@{ptg.hpp}}
+\doxysubsubsection{\texorpdfstring{keyCallback()}{keyCallback()}}
+{\footnotesize\ttfamily void key\+Callback (\begin{DoxyParamCaption}\item[{GLFWwindow \texorpdfstring{$\ast$}{*}}]{window,  }\item[{int}]{key,  }\item[{int}]{scancode,  }\item[{int}]{action,  }\item[{int}]{mods }\end{DoxyParamCaption})}
+
+
+
+GLFW key callback function to handle keyboard input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & The GLFW window. \\
+\hline
+{\em key} & The pressed/released key. \\
+\hline
+{\em scancode} & The system-\/specific scancode of the key. \\
+\hline
+{\em action} & The action (press, release, repeat) of the key. \\
+\hline
+{\em mods} & Modifier keys held down.\\
+\hline
+\end{DoxyParams}
+GLFW key callback function to handle keyboard input.
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & GLFW window. \\
+\hline
+{\em key} & Pressed key. \\
+\hline
+{\em scancode} & System-\/specific scancode of the key. \\
+\hline
+{\em action} & Action (GLFW\+\_\+\+PRESS, GLFW\+\_\+\+RELEASE, GLFW\+\_\+\+REPEAT). \\
+\hline
+{\em mods} & Modifiers (e.\+g., GLFW\+\_\+\+MOD\+\_\+\+SHIFT). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{ptg_8hpp_a5ce8038c3d813c051d431ed6472aece1}\label{ptg_8hpp_a5ce8038c3d813c051d431ed6472aece1} 
+\index{ptg.hpp@{ptg.hpp}!processInputHoldingKey@{processInputHoldingKey}}
+\index{processInputHoldingKey@{processInputHoldingKey}!ptg.hpp@{ptg.hpp}}
+\doxysubsubsection{\texorpdfstring{processInputHoldingKey()}{processInputHoldingKey()}}
+{\footnotesize\ttfamily void process\+Input\+Holding\+Key (\begin{DoxyParamCaption}\item[{GLFWwindow \texorpdfstring{$\ast$}{*}}]{window,  }\item[{float}]{delta\+Time }\end{DoxyParamCaption})}
+
+
+
+Process input while holding down specific keys. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & The GLFW window. \\
+\hline
+{\em delta\+Time} & Time between the current and last frame.\\
+\hline
+\end{DoxyParams}
+Process input while holding down specific keys.
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & GLFW window. \\
+\hline
+{\em delta\+Time} & Time between the current frame and the last frame. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{ptg_8hpp_aa9b224479e8c1cc5251b8e7f3fdabacd}\label{ptg_8hpp_aa9b224479e8c1cc5251b8e7f3fdabacd} 
+\index{ptg.hpp@{ptg.hpp}!scrollCallback@{scrollCallback}}
+\index{scrollCallback@{scrollCallback}!ptg.hpp@{ptg.hpp}}
+\doxysubsubsection{\texorpdfstring{scrollCallback()}{scrollCallback()}}
+{\footnotesize\ttfamily void scroll\+Callback (\begin{DoxyParamCaption}\item[{GLFWwindow \texorpdfstring{$\ast$}{*}}]{window,  }\item[{double}]{xoffset,  }\item[{double}]{yoffset }\end{DoxyParamCaption})}
+
+
+
+GLFW scroll callback function to handle mouse scroll events. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & The GLFW window. \\
+\hline
+{\em xoffset} & The horizontal scroll offset. \\
+\hline
+{\em yoffset} & The vertical scroll offset.\\
+\hline
+\end{DoxyParams}
+GLFW scroll callback function to handle mouse scroll events.
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & GLFW window. \\
+\hline
+{\em xoffset} & Horizontal scroll offset. \\
+\hline
+{\em yoffset} & Vertical scroll offset. \\
+\hline
+\end{DoxyParams}

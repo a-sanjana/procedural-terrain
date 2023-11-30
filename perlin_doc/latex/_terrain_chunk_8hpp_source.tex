@@ -1,0 +1,335 @@
+\doxysection{Terrain\+Chunk.\+hpp}
+\hypertarget{_terrain_chunk_8hpp_source}{}\label{_terrain_chunk_8hpp_source}\index{C:/Users/adapa/OpenGL/GLP/perlin3/TerrainChunk.hpp@{C:/Users/adapa/OpenGL/GLP/perlin3/TerrainChunk.hpp}}
+\mbox{\hyperlink{_terrain_chunk_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ TERRAICHUNK\_HPP}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ TERRAICHUNK\_HPP}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <cstdio>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}include\(\backslash\)glad\(\backslash\)glad.h"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <glm/glm.hpp>}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_vertex_description_8hpp}{VertexDescription.hpp}}"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}PerlinNoise.hpp"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_biome_description_8hpp}{BiomeDescription.hpp}}"{}}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_h_vertex_status}{HVertexStatus}}\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_h_vertex_status_ab2ace5d3896a745f7b8c7e872b6c2491}{BaseH}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_h_vertex_status_a4b528447ca0f0e2ef60716bcbe6e8498}{FinalH}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ glm::vec3\ \mbox{\hyperlink{struct_h_vertex_status_ab060fd76744793e4a39ffa0bce95bdca}{ColorH}};\ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3}{BiomeType}}\ \mbox{\hyperlink{struct_h_vertex_status_a2e10779eee9e11e53be101deab19ab9a}{BioTp}};\ \ \ \ \ }
+\DoxyCodeLine{00029\ \};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_border_helper}{BorderHelper}}\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_border_helper_af80ce503551749be54313d89e242e829}{isBorder}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_border_helper_ab71d992af848fd1076899195d5788b34}{borderAbove}};\ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_border_helper_afbcaee5f19484bcadb1d4376f61038ab}{pDistToBorder}};\ }
+\DoxyCodeLine{00039\ \};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_terrain_chunk}{TerrainChunk}}\{}
+\DoxyCodeLine{00046\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ gridSize,\ seed;}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{float}\ vertexInterval;}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{float}\ xi,\ zi;\textcolor{comment}{//xf\ =\ xi\ +\ gridSize\ *\ vertexInterval,\ zf\ =\ zi\ +\ gridSize\ *\ vertexInterval;}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ VBO,\ EBO;}
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{classsiv_1_1_perlin_noise}{siv::PerlinNoise}}\ pNoise;}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ biomeSize,\ biomeBorderLen;}
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{struct_biome_values}{BiomeValues}}\ bvbuild[BIOMESN];}
+\DoxyCodeLine{00054\ \ \ \ \ }
+\DoxyCodeLine{00055\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ VAO;}
+\DoxyCodeLine{00057\ \ \ \ \ std::vector<Vertex>\ vertices;}
+\DoxyCodeLine{00058\ \ \ \ \ std::vector<unsigned\ int>\ indices;}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00070\ \ \ \ \ \mbox{\hyperlink{class_terrain_chunk_a95c3df8d07426f5921fb86faa8c52d9a}{TerrainChunk}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ pseed,\ \textcolor{keywordtype}{float}\ pvertexInterval,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ pgridSize,\ \textcolor{keywordtype}{float}\ pxi,\ \textcolor{keywordtype}{float}\ pzi,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ pBiosz,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ pBioborderlen)\{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ this-\/>seed\ =\ pseed;}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ this-\/>vertexInterval\ =\ pvertexInterval;}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ this-\/>gridSize\ =\ pgridSize;}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ this-\/>xi\ =\ pxi;}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ this-\/>zi\ =\ pzi;}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ this-\/>pNoise.\mbox{\hyperlink{classsiv_1_1_perlin_noise_af506ca59fe2a0fcc361412b19aaa331b}{reseed}}(seed);}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ this-\/>biomeSize\ =\ pBiosz;}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ this-\/>biomeBorderLen\ =\ pBioborderlen;}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ this-\/>describeTheBiomes();}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ this-\/>vertices.reserve(this-\/>gridSize\ *\ this-\/>gridSize);}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ this-\/>indices.reserve((this-\/>gridSize-\/1)\ *\ (this-\/>gridSize-\/1)\ *\ 6);}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ this-\/>genVectors();}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ this-\/>setUpGLBuffers();}
+\DoxyCodeLine{00084\ \ \ \ \ \}}
+\DoxyCodeLine{00085\ \ \ \ \ }
+\DoxyCodeLine{00086\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00087\ \ \ \ \ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{void}\ describeTheBiomes()\{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ bvbuild[0]\ =\ \mbox{\hyperlink{_biome_description_8hpp_ad4ffa0817369e8dd63351ffcd18e0f3b}{getTheBiomeDescription}}(\mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3aa2ea31a399f98e12824121ee15aaea6a}{PLAINS}});}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ bvbuild[1]\ =\ \mbox{\hyperlink{_biome_description_8hpp_ad4ffa0817369e8dd63351ffcd18e0f3b}{getTheBiomeDescription}}(\mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3a86aadf51e4be40acc1e76bd302a17dcb}{MOUNTAINS}});}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ bvbuild[2]\ =\ \mbox{\hyperlink{_biome_description_8hpp_ad4ffa0817369e8dd63351ffcd18e0f3b}{getTheBiomeDescription}}(\mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3a427eb63b284bf229741f0a93da2222e7}{VALLEY}});}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ bvbuild[3]\ =\ \mbox{\hyperlink{_biome_description_8hpp_ad4ffa0817369e8dd63351ffcd18e0f3b}{getTheBiomeDescription}}(\mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3a0ca6a521202910292a69e7aa7cec009a}{DESERT}});}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ bvbuild[4]\ =\ \mbox{\hyperlink{_biome_description_8hpp_ad4ffa0817369e8dd63351ffcd18e0f3b}{getTheBiomeDescription}}(\mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3a9cecd86cc144278239720f875c429f00}{CANYONS}});}
+\DoxyCodeLine{00097\ \ \ \ \ \}}
+\DoxyCodeLine{00098\ \ \ \ \ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{void}\ genVectors()\{}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_vertex}{Vertex}}\ ijvertex;}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_h_vertex_status}{HVertexStatus}}\ heightaux;}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i=0;\ i<this-\/>gridSize;\ i++)\{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ j=0;\ j<this-\/>gridSize;\ j++)\{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ heightaux\ =\ vertexValuation(this-\/>xi\ +\ (\textcolor{keywordtype}{float})i,\ this-\/>zi\ +\ (\textcolor{keywordtype}{float})j);}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ijvertex.\mbox{\hyperlink{struct_vertex_abb3cfacd96b5955b0cec9359840ee49f}{Position}}\ =\ glm::vec3(this-\/>vertexInterval\ *\ i,\ heightaux.\mbox{\hyperlink{struct_h_vertex_status_a4b528447ca0f0e2ef60716bcbe6e8498}{FinalH}},\ this-\/>vertexInterval\ *\ j);}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ijvertex.\mbox{\hyperlink{struct_vertex_af397652e8fc313a16b7081b381a75659}{Color}}\ =\ heightaux.\mbox{\hyperlink{struct_h_vertex_status_ab060fd76744793e4a39ffa0bce95bdca}{ColorH}};}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>vertices.push\_back(ijvertex);}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i=0;\ i\ <\ this-\/>gridSize-\/1;\ i++)\{\textcolor{comment}{//vertex\ i}}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ j=0;\ j\ <\ this-\/>gridSize-\/1;\ j++)\{}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>indices.push\_back(i*this-\/>gridSize\ +\ j);\textcolor{comment}{//first\ triangle}}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>indices.push\_back(i*this-\/>gridSize\ +\ j+1);}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>indices.push\_back((i+1)*this-\/>gridSize\ +\ j);}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>indices.push\_back((i+1)\ *\ this-\/>gridSize\ +\ j+1);\textcolor{comment}{//second\ triangle}}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>indices.push\_back(i\ *\ this-\/>gridSize\ +\ j+1);}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>indices.push\_back((i+1)\ *\ this-\/>gridSize\ +\ j);}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}vertices:\ \%u\(\backslash\)nindices:\ \%u\(\backslash\)n"{}},this-\/>vertices.size(),\ this-\/>indices.size());}
+\DoxyCodeLine{00130\ \ \ \ \ \}}
+\DoxyCodeLine{00131\ \ \ \ \ }
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keywordtype}{void}\ setUpGLBuffers()\{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ glGenVertexArrays(1,\ \&this-\/>VAO);}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ glGenBuffers(1,\ \&this-\/>VBO);}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ glGenBuffers(1,\ \&this-\/>EBO);}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ glBindVertexArray(this-\/>VAO);}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_ARRAY\_BUFFER,\ this-\/>VBO);}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ glBufferData(GL\_ARRAY\_BUFFER,\ this-\/>vertices.size()\ *\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_vertex}{Vertex}}),\ \&this-\/>vertices[0],\ GL\_STATIC\_DRAW);}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ glBindBuffer(GL\_ELEMENT\_ARRAY\_BUFFER,\ this-\/>EBO);}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ glBufferData(GL\_ELEMENT\_ARRAY\_BUFFER,\ this-\/>indices.size()\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}),\ \&this-\/>indices[0],\ GL\_STATIC\_DRAW);}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Vertex\ Position}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ glEnableVertexAttribArray(0);\ \ \ }
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ glVertexAttribPointer(0,\ 3,\ GL\_FLOAT,\ GL\_FALSE,\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_vertex}{Vertex}}),\ (\textcolor{keywordtype}{void}*)0);}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Vertex\ Color}}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ glEnableVertexAttribArray(1);\ \ \ }
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ glVertexAttribPointer(1,\ 3,\ GL\_FLOAT,\ GL\_FALSE,\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_vertex}{Vertex}}),\ (\textcolor{keywordtype}{void}*)offsetof(\mbox{\hyperlink{struct_vertex}{Vertex}},\ Color));}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ glBindVertexArray(0);}
+\DoxyCodeLine{00156\ \ \ \ \ \}}
+\DoxyCodeLine{00157\ \ \ \ \ }
+\DoxyCodeLine{00164\ \ \ \ \ \mbox{\hyperlink{struct_h_vertex_status}{HVertexStatus}}\ vertexValuation(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ z)\{}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_h_vertex_status}{HVertexStatus}}\ r;}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ actualH;}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ glm::vec3\ actualC;}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ oauxHX,\ oauxHZ;}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ glm::vec3\ oauxCX,\ oauxCZ;}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ r.\mbox{\hyperlink{struct_h_vertex_status_a2e10779eee9e11e53be101deab19ab9a}{BioTp}}\ =\ getBiomeXZ(x,\ z);}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ auxfxz\ =\ (double)\ this-\/>gridSize/bvbuild[r.\mbox{\hyperlink{struct_h_vertex_status_a2e10779eee9e11e53be101deab19ab9a}{BioTp}}].bFrequence;\textcolor{comment}{//bvbuild[r.BioTp]}}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ r.BaseH\ =\ pNoise.\mbox{\hyperlink{classsiv_1_1_perlin_noise_a9fae01d92de147f9fae5bc281fcee854}{octaveNoise}}((\textcolor{keywordtype}{double})x/auxfxz,\ (\textcolor{keywordtype}{double})z/auxfxz,\ bvbuild[r.BioTp].bOctaves);}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ actualC\ =\ biomeColorValuation(r.BioTp,\ r.BaseH);}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ actualH\ =\ biomeHeightValuation(r.BioTp,\ r.BaseH);}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_border_helper}{BorderHelper}}\ someAuxforX\ =\ borderTest(x),\ someAuxforZ\ =\ borderTest(z);}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3}{BiomeType}}\ otherSide\_x,\ otherSide\_z,\ otherSide\_xz;}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ beyondTheWallBase\_x,\ beyondTheWallFinal\_x;}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ beyondTheWallBase\_z,\ beyondTheWallFinal\_z;}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ beyondTheWallBase\_xz,\ beyondTheWallFinal\_xz;}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ r.FinalH\ =\ actualH;}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ r.ColorH\ =\ actualC;}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(someAuxforX.\mbox{\hyperlink{struct_border_helper_af80ce503551749be54313d89e242e829}{isBorder}})\{}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(someAuxforX.\mbox{\hyperlink{struct_border_helper_ab71d992af848fd1076899195d5788b34}{borderAbove}})\{}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ The\ actual\ point(x,\ z),\ is\ border\ in\ the\ x\ axis}}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ otherSide\_x\ =\ getBiomeXZ(x\ +\ this-\/>biomeBorderLen,\ z);}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ auxfxz\ =\ (double)\ this-\/>gridSize/bvbuild[otherSide\_x].bFrequence;}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ beyondTheWallBase\_x\ =\ pNoise.\mbox{\hyperlink{classsiv_1_1_perlin_noise_a9fae01d92de147f9fae5bc281fcee854}{octaveNoise}}((\textcolor{keywordtype}{double})x/auxfxz,\ (double)z/auxfxz,\ bvbuild[otherSide\_x].bOctaves);}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ beyondTheWallFinal\_x\ =\ biomeHeightValuation(otherSide\_x,\ beyondTheWallBase\_x);}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oauxHX\ =\ glm::mix(beyondTheWallFinal\_x,\ actualH,\ \ \ someAuxforX.\mbox{\hyperlink{struct_border_helper_afbcaee5f19484bcadb1d4376f61038ab}{pDistToBorder}});}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.FinalH\ =\ oauxHX;}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oauxCX\ =\ glm::mix(biomeColorValuation(otherSide\_x,\ beyondTheWallBase\_x),\ actualC,\ \ someAuxforX.\mbox{\hyperlink{struct_border_helper_afbcaee5f19484bcadb1d4376f61038ab}{pDistToBorder}});}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.ColorH\ =\ oauxCX;}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(someAuxforZ.isBorder)\{}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(someAuxforZ.borderAbove)\{}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ The\ actual\ point(x,\ z),\ is\ border\ in\ the\ z\ axis}}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ otherSide\_z\ =\ getBiomeXZ(x,\ z\ +\ this-\/>biomeBorderLen);}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ auxfxz\ =\ (double)\ this-\/>gridSize/bvbuild[otherSide\_z].bFrequence;}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ beyondTheWallBase\_z\ =\ pNoise.\mbox{\hyperlink{classsiv_1_1_perlin_noise_a9fae01d92de147f9fae5bc281fcee854}{octaveNoise}}((\textcolor{keywordtype}{double})x/auxfxz,\ (double)z/auxfxz,\ bvbuild[otherSide\_z].bOctaves);}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ beyondTheWallFinal\_z\ =\ biomeHeightValuation(otherSide\_z,\ beyondTheWallBase\_z);}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oauxHZ\ =\ glm::mix(beyondTheWallFinal\_z,\ actualH,\ \ \ someAuxforZ.pDistToBorder);}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.FinalH\ =\ oauxHZ;}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oauxCZ\ =\ glm::mix(biomeColorValuation(otherSide\_z,\ beyondTheWallBase\_z),\ actualC,\ \ someAuxforZ.pDistToBorder);}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.ColorH\ =\ oauxCZ;}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(someAuxforX.\mbox{\hyperlink{struct_border_helper_af80ce503551749be54313d89e242e829}{isBorder}}\ \&\&\ someAuxforZ.isBorder)\{}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ someAuxforX.\mbox{\hyperlink{struct_border_helper_ab71d992af848fd1076899195d5788b34}{borderAbove}}\ \&\&\ someAuxforZ.borderAbove)\{}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ The\ actual\ point(x,\ z),\ is\ border\ in\ the\ x\ and\ z\ axes}}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ otherSide\_xz\ =\ getBiomeXZ(x\ +\ this-\/>biomeBorderLen,\ z\ +\ this-\/>biomeBorderLen);}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ auxfxz\ =\ (double)\ this-\/>gridSize/bvbuild[otherSide\_xz].bFrequence;}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ beyondTheWallBase\_xz\ =\ pNoise.\mbox{\hyperlink{classsiv_1_1_perlin_noise_a9fae01d92de147f9fae5bc281fcee854}{octaveNoise}}((\textcolor{keywordtype}{double})x/auxfxz,\ (double)z/auxfxz,\ bvbuild[otherSide\_xz].bOctaves);}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ beyondTheWallFinal\_xz\ =\ biomeHeightValuation(otherSide\_xz,\ beyondTheWallBase\_xz);}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Bilinear\ interpolation}}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.ColorH\ =\ glm::mix(biomeColorValuation(otherSide\_xz,\ beyondTheWallBase\_xz),\ biomeColorValuation(otherSide\_x,\ beyondTheWallBase\_x),\ \ someAuxforZ.pDistToBorder);}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.FinalH\ =\ glm::mix(beyondTheWallFinal\_xz,\ beyondTheWallFinal\_x,\ \ \ someAuxforZ.pDistToBorder);}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.ColorH\ =\ glm::mix(r.ColorH,\ oauxCZ,\ someAuxforX.\mbox{\hyperlink{struct_border_helper_afbcaee5f19484bcadb1d4376f61038ab}{pDistToBorder}});}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r.FinalH\ =\ glm::mix(r.FinalH,\ oauxHZ,\ someAuxforX.\mbox{\hyperlink{struct_border_helper_afbcaee5f19484bcadb1d4376f61038ab}{pDistToBorder}});}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ r;}
+\DoxyCodeLine{00245\ \ \ \ \ \}}
+\DoxyCodeLine{00246\ \ \ \ \ }
+\DoxyCodeLine{00252\ \ \ \ \ \mbox{\hyperlink{struct_border_helper}{BorderHelper}}\ borderTest(\textcolor{keywordtype}{float}\ k)\{}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ negativeFlag;}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ kaux;}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ negativeFlag\ =\ k\ <\ 0.0\ ?\ true\ :\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ kaux\ =\ negativeFlag?\ k*-\/1:\ k;}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ nearborder\ =\ ((kaux\ /\ this-\/>biomeSize)\ +\ 1)\ *\ this-\/>biomeSize;}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{int}\ nearborder2\ =\ ((kaux\ /\ this-\/>biomeSize))\ *\ this-\/>biomeSize;}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(negativeFlag)\{}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ nearborder\ *=\ -\/1;}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ nearborder2\ *=\ -\/1;}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_border_helper}{BorderHelper}}\ borderRes;}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(glm::abs(nearborder\ -\/\ k)\ <\ this-\/>biomeBorderLen)\{}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ borderRes.\mbox{\hyperlink{struct_border_helper_af80ce503551749be54313d89e242e829}{isBorder}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ borderRes.\mbox{\hyperlink{struct_border_helper_ab71d992af848fd1076899195d5788b34}{borderAbove}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ borderRes.\mbox{\hyperlink{struct_border_helper_afbcaee5f19484bcadb1d4376f61038ab}{pDistToBorder}}\ =\ glm::abs(nearborder\ -\/\ k)\ /\ this-\/>biomeBorderLen;}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(glm::abs(nearborder2\ -\/\ k)\ <\ this-\/>biomeBorderLen)\{}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ borderRes.\mbox{\hyperlink{struct_border_helper_af80ce503551749be54313d89e242e829}{isBorder}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \ \ \ \ borderRes.\mbox{\hyperlink{struct_border_helper_ab71d992af848fd1076899195d5788b34}{borderAbove}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \ \ \ \ borderRes.\mbox{\hyperlink{struct_border_helper_afbcaee5f19484bcadb1d4376f61038ab}{pDistToBorder}}\ =\ glm::abs(nearborder2\ -\/\ k)\ /\ this-\/>biomeBorderLen;}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \ \ \ \ borderRes.\mbox{\hyperlink{struct_border_helper_af80ce503551749be54313d89e242e829}{isBorder}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(negativeFlag)\{}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ borderRes.\mbox{\hyperlink{struct_border_helper_ab71d992af848fd1076899195d5788b34}{borderAbove}}\ =\ !borderRes.\mbox{\hyperlink{struct_border_helper_ab71d992af848fd1076899195d5788b34}{borderAbove}};}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ borderRes;}
+\DoxyCodeLine{00282\ \ \ \ \ \}}
+\DoxyCodeLine{00283\ \ \ \ \ }
+\DoxyCodeLine{00290\ \ \ \ \ \mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3}{BiomeType}}\ getBiomeXZ(\textcolor{keywordtype}{double}\ px,\ \textcolor{keywordtype}{double}\ pz)\{}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ dxs\ =\ (px/(double)this-\/>biomeSize);}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ dzs\ =\ (pz/(double)this-\/>biomeSize);}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(dxs\ <\ 0)\ dxs\ -\/=1.0;}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(dzs\ <\ 0)\ dzs\ -\/=1.0;}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ dxs\ =\ glm::trunc(dxs);}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ dzs\ =\ glm::trunc(dzs);}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ to\ force\ four\ different\ adjacent\ biomes\ (worst\ case)}}
+\DoxyCodeLine{00300\ \textcolor{comment}{\ \ \ \ \ \ \ \ int\ di,\ dj;}}
+\DoxyCodeLine{00301\ \textcolor{comment}{\ \ \ \ \ \ \ \ di\ =\ dxs;}}
+\DoxyCodeLine{00302\ \textcolor{comment}{\ \ \ \ \ \ \ \ dj\ =\ dzs;}}
+\DoxyCodeLine{00303\ \textcolor{comment}{\ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00304\ \textcolor{comment}{\ \ \ \ \ \ \ \ if(di\ ==\ 0\ \&\&\ dj\ ==\ 0)\{}}
+\DoxyCodeLine{00305\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ return\ DESERT;}}
+\DoxyCodeLine{00306\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}else\ if(di\ ==\ 0\ \&\&\ dj\ ==\ 1)\{}}
+\DoxyCodeLine{00307\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ return\ MOUNTAINS;}}
+\DoxyCodeLine{00308\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}else\ if(di\ ==\ 1\ \&\&\ dj\ ==\ 0)\{}}
+\DoxyCodeLine{00309\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ return\ VALLEY;}}
+\DoxyCodeLine{00310\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}else\ if(di\ ==\ 1\ \&\&\ dj\ ==\ 1)\{}}
+\DoxyCodeLine{00311\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ return\ PLAINS;}}
+\DoxyCodeLine{00312\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00313\ \textcolor{comment}{\ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ areaValue\ =\ pNoise.\mbox{\hyperlink{classsiv_1_1_perlin_noise_aa7486945f3945d8dfea1ff025ee64f4d}{noise0\_1}}((dxs\ +\ 7.3)/0.5,\ (dzs+\ 7.3)/0.5);}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ areaValue\ =\ glm::clamp(areaValue,\ 0.0,\ 1.0);}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3}{BiomeType}}\ toTest\ =(\mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3}{BiomeType}})\ (areaValue\ *\ BIOMESN);}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ toTest;}
+\DoxyCodeLine{00323\ \ \ \ \ \}}
+\DoxyCodeLine{00324\ \ \ \ \ }
+\DoxyCodeLine{00331\ \ \ \ \ glm::vec3\ biomeColorValuation(\mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3}{BiomeType}}\ pbtval,\ \textcolor{keywordtype}{double}\ bNoise)\{}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ yaauxColor\ =\ glm::clamp(bNoise,\ -\/1.0,\ 1.0);}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(bNoise\ <\ 0)\{}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ glm::mix(bvbuild[pbtval].midColor,\ bvbuild[pbtval].minColor,\ yaauxColor*-\/1);}
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ glm::mix(bvbuild[pbtval].midColor,\ bvbuild[pbtval].maxColor,\ yaauxColor);}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \}\ \ \ \ }
+\DoxyCodeLine{00339\ \ \ \ \ \}}
+\DoxyCodeLine{00340\ \ \ \ \ }
+\DoxyCodeLine{00347\ \ \ \ \ \textcolor{keywordtype}{double}\ biomeHeightValuation(\mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3}{BiomeType}}\ pbtval,\ \textcolor{keywordtype}{double}\ bNoise)\{}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(pbtval\ ==\ \mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3aa2ea31a399f98e12824121ee15aaea6a}{PLAINS}})\{}
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \ \ \ \ bNoise\ *=10;}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(pbtval\ ==\ \mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3a86aadf51e4be40acc1e76bd302a17dcb}{MOUNTAINS}})\{}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \ \ \ \ bNoise\ =\ glm::pow(1.5,\ bNoise*7.0)*5;}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (pbtval\ ==\ \mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3a427eb63b284bf229741f0a93da2222e7}{VALLEY}})\{}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \ \ \ \ bNoise\ =\ glm::clamp(bNoise,\ -\/0.5,\ 1.0);}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \ \ \ \ bNoise\ =glm::pow(bNoise\ *\ 5,\ 3);}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(pbtval\ ==\ \mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3a0ca6a521202910292a69e7aa7cec009a}{DESERT}})\{}
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \ \ \ \ bNoise\ *=16;}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \}\textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(pbtval\ ==\ \mbox{\hyperlink{_biome_description_8hpp_aeeb2abf7571de1dd398d4a43008015b3a9cecd86cc144278239720f875c429f00}{CANYONS}})\{}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ auxnn\ =\ glm::clamp(bNoise,\ -\/0.3,\ 0.3);}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \ \ \ \ bNoise\ =\ (glm::pow(1.5,\ auxnn*14.0)*5)\ +\ (bNoise\ *\ 8.0);}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00370\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ bNoise;}
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00372\ \ \ \ \ \}}
+\DoxyCodeLine{00373\ \ \ \ \ }
+\DoxyCodeLine{00374\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00378\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_terrain_chunk_a5d16535304fddc9087906db93060c022}{DrawChunk}}()\{}
+\DoxyCodeLine{00379\ \ \ \ \ \ \ \ \ glBindVertexArray(this-\/>VAO);}
+\DoxyCodeLine{00380\ \ \ \ \ \ \ \ \ glDrawElements(GL\_TRIANGLES,\ this-\/>indices.size(),\ GL\_UNSIGNED\_INT,\ 0);}
+\DoxyCodeLine{00381\ \ \ \ \ \ \ \ \ glBindVertexArray(0);}
+\DoxyCodeLine{00382\ \ \ \ \ \}}
+\DoxyCodeLine{00383\ \ \ \ \ }
+\DoxyCodeLine{00387\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_terrain_chunk_ab3b2762c7b7000c4a385ff93b5ba3416}{shutDown}}()\{}
+\DoxyCodeLine{00388\ \ \ \ \ \ \ \ \ glDeleteVertexArrays(1,\ \&this-\/>VAO);}
+\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ glDeleteBuffers(1,\ \&this-\/>VBO);}
+\DoxyCodeLine{00390\ \ \ \ \ \ \ \ \ glDeleteBuffers(1,\ \&this-\/>EBO);}
+\DoxyCodeLine{00391\ \ \ \ \ \}}
+\DoxyCodeLine{00392\ \ \ \ \ }
+\DoxyCodeLine{00397\ \ \ \ \ glm::vec3\ \mbox{\hyperlink{class_terrain_chunk_a4adcb64054dbf977f4888dff8047c99b}{getInitialXZ}}()\{}
+\DoxyCodeLine{00398\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ glm::vec3(this-\/>xi\ *\ this-\/>vertexInterval,\ 0.0f,\ this-\/>zi\ *\ this-\/>vertexInterval);}
+\DoxyCodeLine{00399\ \ \ \ \ \}}
+\DoxyCodeLine{00400\ \ \ \ \ }
+\DoxyCodeLine{00401\ \};}
+\DoxyCodeLine{00402\ }
+\DoxyCodeLine{00403\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

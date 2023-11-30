@@ -1,0 +1,84 @@
+\doxysection{Terrain\+Gen Class Reference}
+\hypertarget{class_terrain_gen}{}\label{class_terrain_gen}\index{TerrainGen@{TerrainGen}}
+
+
+Class for terrain generation and rendering.  
+
+
+
+
+{\ttfamily \#include $<$Terrain\+Gen.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_terrain_gen_a24a692d3980c0dad5e82e63c8dab51c2}{Terrain\+Gen}} (unsigned int p\+Seed, unsigned int psp)
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_terrain_gen}{Terrain\+Gen} class. \end{DoxyCompactList}\item 
+\Hypertarget{class_terrain_gen_ada3f3f9ca997b3d2df83e921a898c278}\label{class_terrain_gen_ada3f3f9ca997b3d2df83e921a898c278} 
+void {\bfseries draw\+Terrain} ()
+\begin{DoxyCompactList}\small\item\em Draws the terrain using the specified shader program. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_terrain_gen_ab834e84985d2db92f9b6d2b9587fc8c9}{rebuild}} (glm\+::vec3 cpos)
+\begin{DoxyCompactList}\small\item\em Rebuilds the terrain based on the current camera position. \end{DoxyCompactList}\item 
+\Hypertarget{class_terrain_gen_a5d78489cbf6662b5b33e86ebb95c101b}\label{class_terrain_gen_a5d78489cbf6662b5b33e86ebb95c101b} 
+void {\bfseries shut\+Down} ()
+\begin{DoxyCompactList}\small\item\em Shuts down the terrain generator and releases resources. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_terrain_chunk}{Terrain\+Chunk}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_terrain_gen_a7b0ada6f64bcb297cc04b2fa877eddbb}{tca1}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for terrain generation and rendering. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_terrain_gen_a24a692d3980c0dad5e82e63c8dab51c2}\label{class_terrain_gen_a24a692d3980c0dad5e82e63c8dab51c2} 
+\index{TerrainGen@{TerrainGen}!TerrainGen@{TerrainGen}}
+\index{TerrainGen@{TerrainGen}!TerrainGen@{TerrainGen}}
+\doxysubsubsection{\texorpdfstring{TerrainGen()}{TerrainGen()}}
+{\footnotesize\ttfamily Terrain\+Gen\+::\+Terrain\+Gen (\begin{DoxyParamCaption}\item[{unsigned int}]{p\+Seed,  }\item[{unsigned int}]{psp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor for \doxylink{class_terrain_gen}{Terrain\+Gen} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Seed} & The seed for terrain generation. \\
+\hline
+{\em psp} & \doxylink{class_shader}{Shader} program ID. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_terrain_gen_ab834e84985d2db92f9b6d2b9587fc8c9}\label{class_terrain_gen_ab834e84985d2db92f9b6d2b9587fc8c9} 
+\index{TerrainGen@{TerrainGen}!rebuild@{rebuild}}
+\index{rebuild@{rebuild}!TerrainGen@{TerrainGen}}
+\doxysubsubsection{\texorpdfstring{rebuild()}{rebuild()}}
+{\footnotesize\ttfamily void Terrain\+Gen\+::rebuild (\begin{DoxyParamCaption}\item[{glm\+::vec3}]{cpos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Rebuilds the terrain based on the current camera position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cpos} & The current camera position. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_terrain_gen_a7b0ada6f64bcb297cc04b2fa877eddbb}\label{class_terrain_gen_a7b0ada6f64bcb297cc04b2fa877eddbb} 
+\index{TerrainGen@{TerrainGen}!tca1@{tca1}}
+\index{tca1@{tca1}!TerrainGen@{TerrainGen}}
+\doxysubsubsection{\texorpdfstring{tca1}{tca1}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_terrain_chunk}{Terrain\+Chunk}}\texorpdfstring{$\ast$}{*} Terrain\+Gen\+::tca1}
+
+Pointer to the first terrain chunk. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/adapa/\+Open\+GL/\+GLP/perlin3/\mbox{\hyperlink{_terrain_gen_8hpp}{Terrain\+Gen.\+hpp}}\end{DoxyCompactItemize}

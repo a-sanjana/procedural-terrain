@@ -1,0 +1,176 @@
+\doxysection{Perlin\+Noise.\+hpp}
+\hypertarget{_perlin_noise_8hpp_source}{}\label{_perlin_noise_8hpp_source}\index{C:/Users/adapa/OpenGL/GLP/perlin3/PerlinNoise.hpp@{C:/Users/adapa/OpenGL/GLP/perlin3/PerlinNoise.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#\ pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#\ include\ <cstdint>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#\ include\ <numeric>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#\ include\ <algorithm>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#\ include\ <random>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }siv}
+\DoxyCodeLine{00008\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classsiv_1_1_perlin_noise}{PerlinNoise}}}
+\DoxyCodeLine{00016\ \ \ \ \ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ std::int32\_t\ p[512];\ }
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ fade(\textcolor{keywordtype}{double}\ t)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ t\ *\ t\ *\ t\ *\ (t\ *\ (t\ *\ 6\ -\/\ 15)\ +\ 10);}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ lerp(\textcolor{keywordtype}{double}\ t,\ \textcolor{keywordtype}{double}\ a,\ \textcolor{keywordtype}{double}\ b)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ a\ +\ t\ *\ (b\ -\/\ a);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ grad(std::int32\_t\ hash,\ \textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y,\ \textcolor{keywordtype}{double}\ z)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::int32\_t\ h\ =\ hash\ \&\ 15;}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ u\ =\ h\ <\ 8\ ?\ x\ :\ y;}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ v\ =\ h\ <\ 4\ ?\ y\ :\ h\ ==\ 12\ ||\ h\ ==\ 14\ ?\ x\ :\ z;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ((h\ \&\ 1)\ ==\ 0\ ?\ u\ :\ -\/u)\ +\ ((h\ \&\ 2)\ ==\ 0\ ?\ v\ :\ -\/v);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classsiv_1_1_perlin_noise_aa81f597d3c5b574f4c94112d680a7503}{PerlinNoise}}(std::uint32\_t\ seed\ =\ std::default\_random\_engine::default\_seed)}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classsiv_1_1_perlin_noise_af506ca59fe2a0fcc361412b19aaa331b}{reseed}}(seed);}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classsiv_1_1_perlin_noise_af506ca59fe2a0fcc361412b19aaa331b}{reseed}}(std::uint32\_t\ seed)}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (std::int32\_t\ i\ =\ 0;\ i\ <\ 256;\ ++i)}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ p[i]\ =\ i;}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ std::shuffle(std::begin(p),\ std::begin(p)\ +\ 256,\ std::default\_random\_engine(seed));}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ 256;\ ++i)}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ p[256\ +\ i]\ =\ p[i];}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classsiv_1_1_perlin_noise_a6871ede469ed99e87d211efebbc3469c}{noise}}(\textcolor{keywordtype}{double}\ x)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00102\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classsiv_1_1_perlin_noise_a6871ede469ed99e87d211efebbc3469c}{noise}}(x,\ 0.0,\ 0.0);}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classsiv_1_1_perlin_noise_abd27605ff19f8e39d5ba94766fe424eb}{noise}}(\textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00114\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classsiv_1_1_perlin_noise_a6871ede469ed99e87d211efebbc3469c}{noise}}(x,\ y,\ 0.0);}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classsiv_1_1_perlin_noise_a356bde0d914a8bd59f9e3bce2e61be1d}{noise}}(\textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y,\ \textcolor{keywordtype}{double}\ z)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00127\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::int32\_t\ X\ =\ \textcolor{keyword}{static\_cast<}std::int32\_t\textcolor{keyword}{>}(std::floor(x))\ \&\ 255;}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::int32\_t\ Y\ =\ \textcolor{keyword}{static\_cast<}std::int32\_t\textcolor{keyword}{>}(std::floor(y))\ \&\ 255;}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::int32\_t\ Z\ =\ \textcolor{keyword}{static\_cast<}std::int32\_t\textcolor{keyword}{>}(std::floor(z))\ \&\ 255;}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ x\ -\/=\ std::floor(x);}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ y\ -\/=\ std::floor(y);}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ z\ -\/=\ std::floor(z);}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ u\ =\ fade(x);}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ v\ =\ fade(y);}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ w\ =\ fade(z);}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ A\ =\ p[X]\ +\ Y,\ AA\ =\ p[A]\ +\ Z,\ AB\ =\ p[A\ +\ 1]\ +\ Z;}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ B\ =\ p[X\ +\ 1]\ +\ Y,\ BA\ =\ p[B]\ +\ Z,\ BB\ =\ p[B\ +\ 1]\ +\ Z;}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ lerp(w,\ lerp(v,\ lerp(u,\ grad(p[AA],\ x,\ y,\ z),}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ grad(p[BA],\ x\ -\/\ 1,\ y,\ z)),}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lerp(u,\ grad(p[AB],\ x,\ y\ -\/\ 1,\ z),}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ grad(p[BB],\ x\ -\/\ 1,\ y\ -\/\ 1,\ z))),}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lerp(v,\ lerp(u,\ grad(p[AA\ +\ 1],\ x,\ y,\ z\ -\/\ 1),}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ grad(p[BA\ +\ 1],\ x\ -\/\ 1,\ y,\ z\ -\/\ 1)),}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lerp(u,\ grad(p[AB\ +\ 1],\ x,\ y\ -\/\ 1,\ z\ -\/\ 1),}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ grad(p[BB\ +\ 1],\ x\ -\/\ 1,\ y\ -\/\ 1,\ z\ -\/\ 1))));}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classsiv_1_1_perlin_noise_a9fae01d92de147f9fae5bc281fcee854}{octaveNoise}}(\textcolor{keywordtype}{double}\ x,\ std::int32\_t\ octaves)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00161\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ result\ =\ 0.0;}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ amp\ =\ 1.0;}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (std::int32\_t\ i\ =\ 0;\ i\ <\ octaves;\ ++i)}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result\ +=\ \mbox{\hyperlink{classsiv_1_1_perlin_noise_a6871ede469ed99e87d211efebbc3469c}{noise}}(x)\ *\ amp;}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x\ *=\ 2.0;}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ amp\ *=\ 0.5;}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classsiv_1_1_perlin_noise_a9fae01d92de147f9fae5bc281fcee854}{octaveNoise}}(\textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y,\ std::int32\_t\ octaves)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00176\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ result\ =\ 0.0;}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ amp\ =\ 1.0;}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (std::int32\_t\ i\ =\ 0;\ i\ <\ octaves;\ ++i)}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result\ +=\ \mbox{\hyperlink{classsiv_1_1_perlin_noise_a6871ede469ed99e87d211efebbc3469c}{noise}}(x,\ y)\ *\ amp;}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x\ *=\ 2.0;}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ y\ *=\ 2.0;}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ amp\ *=\ 0.5;}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classsiv_1_1_perlin_noise_a9fae01d92de147f9fae5bc281fcee854}{octaveNoise}}(\textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y,\ \textcolor{keywordtype}{double}\ z,\ std::int32\_t\ octaves)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00192\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ result\ =\ 0.0;}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ amp\ =\ 1.0;}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (std::int32\_t\ i\ =\ 0;\ i\ <\ octaves;\ ++i)}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result\ +=\ \mbox{\hyperlink{classsiv_1_1_perlin_noise_a6871ede469ed99e87d211efebbc3469c}{noise}}(x,\ y,\ z)\ *\ amp;}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x\ *=\ 2.0;}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ y\ *=\ 2.0;}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ z\ *=\ 2.0;}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ amp\ *=\ 0.5;}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classsiv_1_1_perlin_noise_aa7486945f3945d8dfea1ff025ee64f4d}{noise0\_1}}(\textcolor{keywordtype}{double}\ x)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00215\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classsiv_1_1_perlin_noise_a6871ede469ed99e87d211efebbc3469c}{noise}}(x)\ *\ 0.5\ +\ 0.5;}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classsiv_1_1_perlin_noise_aa7486945f3945d8dfea1ff025ee64f4d}{noise0\_1}}(\textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00220\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classsiv_1_1_perlin_noise_a6871ede469ed99e87d211efebbc3469c}{noise}}(x,\ y)\ *\ 0.5\ +\ 0.5;}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classsiv_1_1_perlin_noise_aa7486945f3945d8dfea1ff025ee64f4d}{noise0\_1}}(\textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y,\ \textcolor{keywordtype}{double}\ z)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00225\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classsiv_1_1_perlin_noise_a6871ede469ed99e87d211efebbc3469c}{noise}}(x,\ y,\ z)\ *\ 0.5\ +\ 0.5;}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00228\ }
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classsiv_1_1_perlin_noise_afa7c57a480d5c0dcaa8a55af301615ec}{octaveNoise0\_1}}(\textcolor{keywordtype}{double}\ x,\ std::int32\_t\ octaves)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00237\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classsiv_1_1_perlin_noise_a9fae01d92de147f9fae5bc281fcee854}{octaveNoise}}(x,\ octaves)\ *\ 0.5\ +\ 0.5;}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00240\ }
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classsiv_1_1_perlin_noise_afa7c57a480d5c0dcaa8a55af301615ec}{octaveNoise0\_1}}(\textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y,\ std::int32\_t\ octaves)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00242\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classsiv_1_1_perlin_noise_a9fae01d92de147f9fae5bc281fcee854}{octaveNoise}}(x,\ y,\ octaves)\ *\ 0.5\ +\ 0.5;}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00245\ }
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classsiv_1_1_perlin_noise_afa7c57a480d5c0dcaa8a55af301615ec}{octaveNoise0\_1}}(\textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y,\ \textcolor{keywordtype}{double}\ z,\ std::int32\_t\ octaves)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00247\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classsiv_1_1_perlin_noise_a9fae01d92de147f9fae5bc281fcee854}{octaveNoise}}(x,\ y,\ z,\ octaves)\ *\ 0.5\ +\ 0.5;}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00250\ \ \ \ \ \};}
+\DoxyCodeLine{00251\ \}}
+
+\end{DoxyCode}
