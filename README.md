@@ -6,10 +6,10 @@ https://github.com/a-sanjana/procedural-terrain/assets/115346209/fec3b6fe-d66f-4
 Generates four different types of biomes - mountains, valleys, plains and deserts. Their boundaries are interpolated.
 
 <p>
-    <img src="mountain.png" width ="20%" hspace="10" >
-    <img src="valley.png" width ="20%" hspace="10" >
-    <img src="plain.png" width ="20%" hspace="10" >
-    <img src="desert.png" width ="20%" hspace="10" >
+    <img src="mountain.png" width ="20%" hspace="3" >
+    <img src="valley.png" width ="20%" hspace="3" >
+    <img src="plain.png" width ="20%" hspace="3" >
+    <img src="desert.png" width ="20%" hspace="3" >
 </p>
 
 ## Controls
